@@ -5,3 +5,10 @@
     background-size: contain;
     background-position: center;
 }
+
+.bg-letter {
+    background-image: url(/assets/bg-letter-main.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+}
