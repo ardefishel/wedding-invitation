@@ -13,12 +13,13 @@ export const Route = createFileRoute("/")({
  */
 
 function RouteComponent() {
-
   return (
     <div className="h-svh bg-grey-olive overflow-hidden">
-      <div className="max-w-xl bg-knit h-full mx-auto flex relative flex-col justify-center items-center">
-        <TheWeddingEnvelope />
-        <TheWeddingTitle />
+      <div className="max-w-xl bg-knit h-full mx-auto flex relative justify-center items-center">
+        <div className="invite-scale flex flex-col justify-center items-center">
+          <TheWeddingEnvelope />
+          <TheWeddingTitle />
+        </div>
       </div>
     </div>
   );
@@ -26,7 +27,7 @@ function RouteComponent() {
 
 const TheWeddingEnvelope = () => {
   return (
-    <div className="items-center w-[70%] mt-8 rotate-6 flex flex-col relative  h-[50%] max-h-[340px] ">
+    <div className="items-center w-[70%] mt-8 rotate-6 flex flex-col relative h-[50%] max-h-[340px] ">
       <div className="bg-letter w-full h-100 bottom-0 z-0">
         <div className="flex flex-col -rotate-2 mx-auto mt-8 w-fit">
           <div className="mx-auto">
@@ -38,7 +39,7 @@ const TheWeddingEnvelope = () => {
       </div>
       <div className="absolute bottom-0 w-fit z-10">
         <img src="/assets/ornament-flower.webp" className="absolute right-2 rotate-2 -top-18 m-auto -z-1 w-[30%] object-contain" />
-        <img src="/assets/envelope-stamp.webp" className="absolute m-auto inset-0 z-10 -translate-y-3  size-12" />
+        <img src="/assets/envelope-stamp.webp" className="absolute m-auto inset-0 z-10 -translate-y-3 size-12" />
         <img src="/assets/envelope-body.webp" className="z-100 " alt="" />
       </div>
     </div>

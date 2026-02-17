@@ -19,3 +19,32 @@
     background-size: 105%;
     background-position: center center;
 }
+
+.invite-scale {
+    transform: scale(1);
+    transform-origin: center;
+}
+
+@media (min-width: 640px) {
+    .invite-scale {
+        transform: scale(1.03);
+    }
+}
+
+@media (min-width: 768px) {
+    .invite-scale {
+        transform: scale(1.08);
+    }
+}
+
+@media (min-width: 1024px) {
+    .invite-scale {
+        transform: scale(1.15);
+    }
+}
+
+@media (min-width: 1280px) {
+    .invite-scale {
+        transform: scale(1.2);
+    }
+}
