@@ -16,7 +16,7 @@ function RouteComponent() {
 
   return (
     <div className="h-svh bg-grey-olive overflow-hidden">
-      <div className="max-w-xl bg-knit h-full mx-auto flex flex-col justify-center items-center">
+      <div className="max-w-xl bg-knit h-full mx-auto flex relative flex-col justify-center items-center">
         <TheWeddingEnvelope />
         <TheWeddingTitle />
       </div>
@@ -33,7 +33,6 @@ const TheWeddingEnvelope = () => {
             <h3 className="font-parisienne text-2xl text-center">Dear</h3>
             <h2 className="uppercase text-4xl">Guest <br /> Name</h2>
           </div>
-
           <span className="uppercase text-lg">You are invited to ... </span>
         </div>
       </div>
@@ -47,13 +46,16 @@ const TheWeddingEnvelope = () => {
 }
 
 const TheWeddingTitle = () => (
-  <div className="bg-letter w-[80%] px-4 py-12 mx-auto text-center -rotate-6 text-fuchsia-plum">
+  <div className="bg-letter w-[80%] relative px-4 py-12 mx-auto text-center -rotate-6 text-fuchsia-plum">
+    <img src="/assets/ornament-necklace.png" className="absolute w-72  z-100 -top-26 -right-32 object-cover" />
+
     <h3 className="font-noto-serif uppercase text-xs">The Wedding of</h3>
     <div className="font-parisienne text-3xl flex justify-center items-center mb-8">
       <span className="flex-1">Thalita</span>
       <img src="/assets/purple-doves.png" className="w-1/4 -mx-10 object-contain translate-y-2" />
       <span className="flex-1">Rama</span>
     </div>
+
     <ThemeButton text="Open Invitation" />
   </div>
 )
