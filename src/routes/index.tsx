@@ -1,52 +1,40 @@
-import { createFileRoute } from '@tanstack/react-router'
-import './index.css'
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/')({
-  component: WeddingInvitation,
-})
+import "./index.css";
 
-function WeddingInvitation() {
+export const Route = createFileRoute("/")({
+  component: RouteComponent,
+});
+
+/*
+ * Canva canvas: 1179 × 2256 px
+ * All positions derived from Canva transform: translate(Xpx, Ypx) rotate(Ndeg)
+ * Converted to percentages: left% = X/1179*100, top% = Y/2256*100, width% = W/1179*100
+ */
+
+function RouteComponent() {
+
   return (
-    <div className="invitation-container">
-      <div className="invitation-card">
-        <div className="decoration-top">
-          <span className="floral">❦</span>
-        </div>
-
-        <p className="invitation-pre-title">Together with their families</p>
-
-        <h1 className="wedding-names">
-          Thalita <span className="ampersand">&</span> Rama
-        </h1>
-
-        <p className="invitation-date">Are getting married</p>
-
-        <div className="wedding-details">
-          <div className="detail-item">
-            <p className="detail-label">When</p>
-            <p className="detail-value">Saturday, December 27, 2025</p>
-            <p className="detail-time">4:00 PM</p>
-          </div>
-
-          <div className="divider">
-            <span className="floral small">❦</span>
-          </div>
-
-          <div className="detail-item">
-            <p className="detail-label">Where</p>
-            <p className="detail-value">The Grand Ballroom</p>
-            <p className="detail-location">Hotel Indonesia Kempinski</p>
-            <p className="detail-address">Jakarta, Indonesia</p>
-          </div>
-        </div>
-
-        <div className="invitation-footer">
-          <p className="reception-note">Reception to follow</p>
-          <div className="decoration-bottom">
-            <span className="floral">❦</span>
-          </div>
-        </div>
-      </div>
+    <div className="min-h-[100svh] bg-[rgb(145,137,116)] flex flex-col justify-center overflow-hidden">
+      <TheWeddingTitle />
+      <ThemeButton text="Open Invitation" />
     </div>
-  )
+  );
 }
+const TheWeddingTitle = () => (
+  <div className="bg-white mx-auto min-w-md text-center text-[#bc6890]">
+    <h3 className="font-noto-serif uppercase text-3xl">The Wedding of</h3>
+    <div className="font-parisienne text-[85px] flex justify-center items-center gap-42 relative ">
+      <span>Thalita</span>
+      <img src="/assets/purple-doves.png" className=" size-[240px] object-contain absolute inset-0 m-auto translate-y-8 translate-x-2" />
+      <span>Rama</span>
+    </div>
+  </div>
+)
+
+const ThemeButton = ({ text }: { text: string }) => (
+  <button
+    className="uppercase text-[#2b2b2b] inline-block px-8 py-4 theme-button">
+    {text}
+  </button>
+)
