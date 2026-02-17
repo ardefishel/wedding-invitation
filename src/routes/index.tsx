@@ -15,39 +15,44 @@ export const Route = createFileRoute("/")({
 function RouteComponent() {
 
   return (
-    <div className="min-h-svh bg-[rgb(145,137,116)] flex flex-col justify-center overflow-hidden">
-      <TheWeddingEnvelope />
-      <TheWeddingTitle />
+    <div className="h-svh bg-grey-olive overflow-hidden">
+      <div className="max-w-xl bg-knit h-full mx-auto flex flex-col justify-center items-center">
+        <TheWeddingEnvelope />
+        <TheWeddingTitle />
+      </div>
     </div>
   );
 }
 
 const TheWeddingEnvelope = () => {
   return (
-    <div className="items-center flex flex-col relative  h-fit ">
-      <div className="bg-letter w-[443px] h-140 bottom-0 z-0">
-        <div className="flex flex-col mx-auto mt-16 w-fit">
-          <h3 className="font-parisienne text-4xl text-center">Dear</h3>
-          <h2 className="uppercase text-6xl">Guest <br /> Name</h2>
-          <span className="uppercase text-1xl">You are invited to ... </span>
+    <div className="items-center w-[70%] mt-8 rotate-6 flex flex-col relative  h-[50%] max-h-[340px] ">
+      <div className="bg-letter w-full h-100 bottom-0 z-0">
+        <div className="flex flex-col -rotate-2 mx-auto mt-8 w-fit">
+          <div className="mx-auto">
+            <h3 className="font-parisienne text-2xl text-center">Dear</h3>
+            <h2 className="uppercase text-4xl">Guest <br /> Name</h2>
+          </div>
+
+          <span className="uppercase text-lg">You are invited to ... </span>
         </div>
       </div>
       <div className="absolute bottom-0 w-fit z-10">
-        <img src="/assets/ornament-flower.webp" className="absolute right-4 rotate-6 -top-26 m-auto -z-1 w-32" />
-        <img src="/assets/envelope-stamp.webp" className="absolute m-auto inset-0 z-10 -translate-y-6  size-24" />
-        <img src="/assets/envelope-body.webp" className="w-[443px] z-100 " alt="" />
+        <img src="/assets/ornament-flower.webp" className="absolute right-2 rotate-2 -top-18 m-auto -z-1 w-[30%] object-contain" />
+        <img src="/assets/envelope-stamp.webp" className="absolute m-auto inset-0 z-10 -translate-y-3  size-12" />
+        <img src="/assets/envelope-body.webp" className="z-100 " alt="" />
       </div>
     </div>
   )
 }
 
 const TheWeddingTitle = () => (
-  <div className="bg-letter p-16 mx-auto min-w-md text-center text-[#bc6890]">
-    <h3 className="font-noto-serif uppercase text-3xl">The Wedding of</h3>
-    <div className="font-parisienne text-[85px] flex justify-center items-center gap-42 relative mb-16 ">
-      <span>Thalita</span>
-      <img src="/assets/purple-doves.png" className=" size-[240px] object-contain absolute inset-0 m-auto translate-y-8 translate-x-2" />
-      <span>Rama</span>
+  <div className="bg-letter w-[80%] px-4 py-12 mx-auto text-center -rotate-6 text-fuchsia-plum">
+    <h3 className="font-noto-serif uppercase text-xs">The Wedding of</h3>
+    <div className="font-parisienne text-3xl flex justify-center items-center mb-8">
+      <span className="flex-1">Thalita</span>
+      <img src="/assets/purple-doves.png" className="w-1/4 -mx-10 object-contain translate-y-2" />
+      <span className="flex-1">Rama</span>
     </div>
     <ThemeButton text="Open Invitation" />
   </div>
@@ -55,7 +60,7 @@ const TheWeddingTitle = () => (
 
 const ThemeButton = ({ text }: { text: string }) => (
   <button
-    className="uppercase text-[#2b2b2b] inline-block px-8 py-4 theme-button">
+    className="uppercase text-[#2b2b2b] inline-block px-8 text-sm py-2 theme-button">
     {text}
   </button>
 )
