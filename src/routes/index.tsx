@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useCallback, useState, type ImgHTMLAttributes } from "react";
 
 import "./index.css";
 
@@ -13,19 +14,40 @@ export const Route = createFileRoute("/")({
  */
 
 function RouteComponent() {
+  const totalImages = 5;
+  const [loadedImages, setLoadedImages] = useState(0);
+
+  const handleImageLoaded = useCallback(() => {
+    setLoadedImages((value) => (value < totalImages ? value + 1 : value));
+  }, [totalImages]);
+
+  const allImagesLoaded = loadedImages >= totalImages;
+  const revealClassName = allImagesLoaded ? "reveal-item" : "reveal-item--pending";
+
   return (
-    <div className="h-svh bg-grey-olive overflow-hidden">
+    <div className="h-svh bg-grey-olive overflow-hidden relative">
       <div className="max-w-xl bg-knit h-full mx-auto flex relative justify-center items-center">
         <div className="invite-scale flex flex-col justify-center items-center">
-          <TheWeddingEnvelope className="reveal-item" />
-          <TheWeddingTitle className="reveal-item" />
+          <TheWeddingEnvelope className={revealClassName} onImageLoad={handleImageLoaded} />
+          <TheWeddingTitle className={revealClassName} onImageLoad={handleImageLoaded} />
         </div>
       </div>
+      {!allImagesLoaded && (
+        <div className="image-loading-overlay" aria-live="polite" aria-busy="true">
+          <div className="image-spinner" aria-label="Loading images" />
+        </div>
+      )}
     </div>
   );
 }
 
-const TheWeddingEnvelope = ({ className = "" }: { className?: string }) => {
+const TheWeddingEnvelope = ({
+  className = "",
+  onImageLoad,
+}: {
+  className?: string;
+  onImageLoad: () => void;
+}) => {
   return (
     <div className={`items-center w-[70%] mt-8 rotate-6 flex flex-col relative h-[50%] max-h-[340px] ${className}`}>
       <div className="bg-letter w-full h-100 bottom-0 z-0">
@@ -38,32 +60,58 @@ const TheWeddingEnvelope = ({ className = "" }: { className?: string }) => {
         </div>
       </div>
       <div className="absolute bottom-0 w-fit z-10">
-        <img src="/assets/ornament-flower.webp" className="absolute right-2 rotate-2 -top-18 m-auto -z-1 w-[30%] object-contain" />
-        <img src="/assets/envelope-stamp.webp" className="absolute m-auto inset-0 z-10 -translate-y-3 size-12" />
-        <img src="/assets/envelope-body.webp" className="z-100 " alt="" />
+        <LoadingImage
+          src="/assets/ornament-flower.webp"
+          className="absolute right-2 rotate-2 -top-18 m-auto -z-1 w-[30%] object-contain"
+          onImageLoad={onImageLoad}
+        />
+        <LoadingImage
+          src="/assets/envelope-stamp.webp"
+          className="absolute m-auto inset-0 z-10 -translate-y-3 size-12"
+          onImageLoad={onImageLoad}
+        />
+        <LoadingImage src="/assets/envelope-body.webp" className="z-100" alt="" onImageLoad={onImageLoad} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-const TheWeddingTitle = ({ className = "" }: { className?: string }) => (
+const TheWeddingTitle = ({
+  className = "",
+  onImageLoad,
+}: {
+  className?: string;
+  onImageLoad: () => void;
+}) => (
   <div className={`bg-letter w-[80%] relative px-4 py-12 mx-auto text-center -rotate-6 text-fuchsia-plum ${className}`}>
-    <img src="/assets/ornament-necklace.png" className="absolute w-72  z-100 -top-26 -right-32 object-cover" />
+    <LoadingImage
+      src="/assets/ornament-necklace.png"
+      className="absolute w-72  z-100 -top-26 -right-32 object-cover"
+      onImageLoad={onImageLoad}
+    />
 
     <h3 className="font-noto-serif uppercase text-xs">The Wedding of</h3>
     <div className="font-parisienne text-3xl flex justify-center items-center mb-8">
       <span className="flex-1">Thalita</span>
-      <img src="/assets/purple-doves.png" className="w-1/4 -mx-10 object-contain translate-y-2" />
+      <LoadingImage
+        src="/assets/purple-doves.png"
+        className="w-1/4 -mx-10 object-contain translate-y-2"
+        onImageLoad={onImageLoad}
+      />
       <span className="flex-1">Rama</span>
     </div>
 
     <ThemeButton text="Open Invitation" />
   </div>
-)
+);
 
 const ThemeButton = ({ text }: { text: string }) => (
   <button
     className="uppercase text-[#2b2b2b] inline-block px-8 text-sm py-2 theme-button">
     {text}
   </button>
-)
+);
+
+const LoadingImage = ({ onImageLoad, ...props }: ImgHTMLAttributes<HTMLImageElement> & { onImageLoad: () => void }) => (
+  <img {...props} onLoad={onImageLoad} onError={onImageLoad} />
+);

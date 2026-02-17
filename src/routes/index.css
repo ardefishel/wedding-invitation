@@ -31,6 +31,32 @@
     animation: invite-reveal 1s ease-out forwards;
 }
 
+.reveal-item--pending {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+}
+
+.image-loading-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(35, 33, 29, 0.45);
+    backdrop-filter: blur(2px);
+    z-index: 50;
+}
+
+.image-spinner {
+    width: 56px;
+    height: 56px;
+    border-radius: 999px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #f3d8cf;
+    animation: spinner-rotate 0.9s linear infinite;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+}
+
 .reveal-item:nth-child(1) {
     animation-delay: 0.15s;
 }
@@ -72,5 +98,15 @@
     100% {
         opacity: 1;
         transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes spinner-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }
