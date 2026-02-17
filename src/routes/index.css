@@ -25,6 +25,20 @@
     transform-origin: center;
 }
 
+.reveal-item {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+    animation: invite-reveal 1s ease-out forwards;
+}
+
+.reveal-item:nth-child(1) {
+    animation-delay: 0.15s;
+}
+
+.reveal-item:nth-child(2) {
+    animation-delay: 0.45s;
+}
+
 @media (min-width: 640px) {
     .invite-scale {
         transform: scale(1.03);
@@ -46,5 +60,17 @@
 @media (min-width: 1280px) {
     .invite-scale {
         transform: scale(1.2);
+    }
+}
+
+@keyframes invite-reveal {
+    0% {
+        opacity: 0;
+        transform: translateY(18px) scale(0.985);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }

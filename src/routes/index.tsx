@@ -17,17 +17,17 @@ function RouteComponent() {
     <div className="h-svh bg-grey-olive overflow-hidden">
       <div className="max-w-xl bg-knit h-full mx-auto flex relative justify-center items-center">
         <div className="invite-scale flex flex-col justify-center items-center">
-          <TheWeddingEnvelope />
-          <TheWeddingTitle />
+          <TheWeddingEnvelope className="reveal-item" />
+          <TheWeddingTitle className="reveal-item" />
         </div>
       </div>
     </div>
   );
 }
 
-const TheWeddingEnvelope = () => {
+const TheWeddingEnvelope = ({ className = "" }: { className?: string }) => {
   return (
-    <div className="items-center w-[70%] mt-8 rotate-6 flex flex-col relative h-[50%] max-h-[340px] ">
+    <div className={`items-center w-[70%] mt-8 rotate-6 flex flex-col relative h-[50%] max-h-[340px] ${className}`}>
       <div className="bg-letter w-full h-100 bottom-0 z-0">
         <div className="flex flex-col -rotate-2 mx-auto mt-8 w-fit">
           <div className="mx-auto">
@@ -46,8 +46,8 @@ const TheWeddingEnvelope = () => {
   )
 }
 
-const TheWeddingTitle = () => (
-  <div className="bg-letter w-[80%] relative px-4 py-12 mx-auto text-center -rotate-6 text-fuchsia-plum">
+const TheWeddingTitle = ({ className = "" }: { className?: string }) => (
+  <div className={`bg-letter w-[80%] relative px-4 py-12 mx-auto text-center -rotate-6 text-fuchsia-plum ${className}`}>
     <img src="/assets/ornament-necklace.png" className="absolute w-72  z-100 -top-26 -right-32 object-cover" />
 
     <h3 className="font-noto-serif uppercase text-xs">The Wedding of</h3>
