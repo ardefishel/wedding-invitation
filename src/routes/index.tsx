@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useCallback, useState, type ImgHTMLAttributes } from "react";
+import { useCallback, useEffect, useRef, useState, type ImgHTMLAttributes } from "react";
 
 import "./index.css";
 
@@ -112,6 +112,25 @@ const ThemeButton = ({ text }: { text: string }) => (
   </button>
 );
 
-const LoadingImage = ({ onImageLoad, ...props }: ImgHTMLAttributes<HTMLImageElement> & { onImageLoad: () => void }) => (
-  <img {...props} onLoad={onImageLoad} onError={onImageLoad} />
-);
+const LoadingImage = ({ onImageLoad, ...props }: ImgHTMLAttributes<HTMLImageElement> & { onImageLoad: () => void }) => {
+  const imageRef = useRef<HTMLImageElement | null>(null);
+  const hasReportedRef = useRef(false);
+
+  const notifyLoaded = useCallback(() => {
+    if (hasReportedRef.current) {
+      return;
+    }
+
+    hasReportedRef.current = true;
+    onImageLoad();
+  }, [onImageLoad]);
+
+  useEffect(() => {
+    const image = imageRef.current;
+    if (image && image.complete && image.naturalWidth > 0) {
+      notifyLoaded();
+    }
+  }, [notifyLoaded]);
+
+  return <img ref={imageRef} {...props} onLoad={notifyLoaded} onError={notifyLoaded} />;
+};
