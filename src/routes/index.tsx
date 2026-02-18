@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState, type ImgHTMLAttributes } from "react";
+import { useNavigateWithTransition } from "../utils/transitions";
 
 import "./index.css";
 
@@ -105,12 +106,18 @@ const TheWeddingTitle = ({
   </div>
 );
 
-const ThemeButton = ({ text }: { text: string }) => (
-  <button
-    className="uppercase text-[#2b2b2b] inline-block px-8 text-sm py-2 theme-button">
-    {text}
-  </button>
-);
+const ThemeButton = ({ text }: { text: string }) => {
+  const { navigate } = useNavigateWithTransition();
+
+  return (
+    <button
+      onClick={() => navigate("/content")}
+      className="uppercase text-[#2b2b2b] inline-block px-8 text-sm py-2 theme-button"
+    >
+      {text}
+    </button>
+  );
+};
 
 const LoadingImage = ({ onImageLoad, ...props }: ImgHTMLAttributes<HTMLImageElement> & { onImageLoad: () => void }) => {
   const imageRef = useRef<HTMLImageElement | null>(null);
