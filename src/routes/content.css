@@ -1,0 +1,91 @@
+/* Content page styles */
+
+.oval-frame {
+    width: 65%;
+    max-width: 280px;
+    aspect-ratio: 4 / 5;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #c8a2b5;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.oval-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.oval-frame-sm {
+    width: 30%;
+    max-width: 140px;
+    aspect-ratio: 4 / 5;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #c8a2b5;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.oval-frame-sm img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bg-rose-section {
+    background: linear-gradient(180deg, #d4a9a9 0%, #c9908e 40%, #c48888 100%);
+}
+
+.section-divider {
+    width: 60%;
+    max-width: 200px;
+    opacity: 0.6;
+}
+
+.ornament-frame {
+    width: 55%;
+    max-width: 260px;
+    opacity: 0.7;
+}
+
+/* ─── Ucapan (Wishes) Section ─── */
+
+.ucapan-border-frame {
+    position: relative;
+    border: 18px solid transparent;
+    border-image: url('/assets/ucapan-border.png') 80 fill stretch;
+    padding: 24px 16px;
+    text-align: left;
+}
+
+.ucapan-comments-list {
+    max-height: 240px;
+    overflow-y: auto;
+    margin-bottom: 16px;
+    padding-right: 4px;
+}
+
+.ucapan-comments-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.ucapan-comments-list::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+}
+
+.ucapan-comment-item {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.ucapan-comment-item:last-child {
+    border-bottom: none;
+}
+
+.ucapan-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+}

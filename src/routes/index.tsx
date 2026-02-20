@@ -106,7 +106,7 @@ const TheWeddingTitle = ({
   </div>
 );
 
-const ThemeButton = ({ text }: { text: string }) => {
+export const ThemeButton = ({ text }: { text: string }) => {
   const { navigate } = useNavigateWithTransition();
 
   return (
@@ -119,7 +119,7 @@ const ThemeButton = ({ text }: { text: string }) => {
   );
 };
 
-const LoadingImage = ({ onImageLoad, ...props }: ImgHTMLAttributes<HTMLImageElement> & { onImageLoad: () => void }) => {
+export const LoadingImage = ({ onImageLoad, ...props }: ImgHTMLAttributes<HTMLImageElement> & { onImageLoad: () => void }) => {
   const imageRef = useRef<HTMLImageElement | null>(null);
   const hasReportedRef = useRef(false);
 
