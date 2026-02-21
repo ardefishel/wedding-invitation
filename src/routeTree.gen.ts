@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WipEnvelopeRouteImport } from './routes/wip-envelope'
 import { Route as ContentRouteImport } from './routes/content'
 import { Route as IndexRouteImport } from './routes/index'
 
+const WipEnvelopeRoute = WipEnvelopeRouteImport.update({
+  id: '/wip-envelope',
+  path: '/wip-envelope',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContentRoute = ContentRouteImport.update({
   id: '/content',
   path: '/content',
@@ -26,31 +32,42 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/content': typeof ContentRoute
+  '/wip-envelope': typeof WipEnvelopeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/content': typeof ContentRoute
+  '/wip-envelope': typeof WipEnvelopeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/content': typeof ContentRoute
+  '/wip-envelope': typeof WipEnvelopeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/content'
+  fullPaths: '/' | '/content' | '/wip-envelope'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/content'
-  id: '__root__' | '/' | '/content'
+  to: '/' | '/content' | '/wip-envelope'
+  id: '__root__' | '/' | '/content' | '/wip-envelope'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContentRoute: typeof ContentRoute
+  WipEnvelopeRoute: typeof WipEnvelopeRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/wip-envelope': {
+      id: '/wip-envelope'
+      path: '/wip-envelope'
+      fullPath: '/wip-envelope'
+      preLoaderRoute: typeof WipEnvelopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/content': {
       id: '/content'
       path: '/content'
@@ -71,6 +88,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContentRoute: ContentRoute,
+  WipEnvelopeRoute: WipEnvelopeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

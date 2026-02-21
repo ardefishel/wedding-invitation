@@ -1,0 +1,106 @@
+/* FIXED - Missing height/width + transform-style */
+
+@keyframes open-envelope {
+    0% {
+        transform: scaleY(1);
+    }
+
+    100% {
+        transform: scaleY(-1);
+    }
+}
+
+@keyframes close-envelope {
+    0% {
+        transform: scaleY(-1);
+    }
+
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes to-hide {
+
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes to-show {
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.envelope {
+    position: relative;
+    /* Give envelope explicit dimensions */
+}
+
+.envelope-top-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    transform-origin: top;
+    transform-style: preserve-3d;
+    height: 70%;
+    width: 100%;
+}
+
+.envelope-top-wrapper {
+    transform: scaleY(1);
+}
+
+.envelope-top-wrapper.open {
+    animation: open-envelope 1s ease-in-out forwards;
+}
+
+.envelope-top-wrapper.close {
+    animation: close-envelope 1s ease-in-out forwards;
+}
+
+.envelope-top-front,
+.envelope-top-back {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 1s ease-in-out;
+
+}
+
+.envelope-top-front {
+    opacity: 1;
+}
+
+.envelope-top-back {
+    opacity: 0;
+}
+
+.envelope-top-front.close {
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.envelope-top-back.open {
+    animation: to-show 1s normal forwards;
+}
+
+.envelope-top-back.close {
+    animation: to-hide 1s normal forwards;
+}
