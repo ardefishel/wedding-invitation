@@ -1,3 +1,4 @@
+import { motion } from "motion/react"
 import { LoadingImage } from '@/routes';
 
 type Props = {
@@ -10,8 +11,19 @@ const Envelope = ({
     onImageLoad
 }: Props) => {
     return (
-        <div className={`items-center w-[70%] mt-8 rotate-6 flex flex-col relative h-[50%] max-h-[340px] ${className}`}>
-            <div className="bg-letter w-full h-100 bottom-0 z-0">
+        <motion.div
+            className={`items-center w-[70%] mt-8 rotate-6 flex flex-col relative h-[50%] max-h-[340px] ${className}`}
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+            {/* Envelope Letter */}
+            {/* <motion.div
+                className="bg-letter w-full h-100 bottom-0 z-0"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
+            >
                 <div className="flex flex-col -rotate-2 mx-auto mt-8 w-fit">
                     <div className="mx-auto">
                         <h3 className="font-parisienne text-2xl text-center">Dear</h3>
@@ -19,7 +31,7 @@ const Envelope = ({
                     </div>
                     <span className="uppercase text-lg">You are invited to ... </span>
                 </div>
-            </div>
+            </motion.div> */}
             <div className="absolute bottom-0 w-fit z-10">
                 <LoadingImage
                     src="/assets/ornament-flower.webp"
@@ -33,7 +45,7 @@ const Envelope = ({
                 />
                 <LoadingImage src="/assets/envelope-body.webp" className="z-100" alt="" onImageLoad={onImageLoad} />
             </div>
-        </div>
+        </motion.div>
     );
 }
 

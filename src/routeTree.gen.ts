@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WipEnvelopeRouteImport } from './routes/wip-envelope'
+import { Route as EnvelopeRouteImport } from './routes/envelope'
 import { Route as ContentRouteImport } from './routes/content'
 import { Route as IndexRouteImport } from './routes/index'
 
 const WipEnvelopeRoute = WipEnvelopeRouteImport.update({
   id: '/wip-envelope',
   path: '/wip-envelope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnvelopeRoute = EnvelopeRouteImport.update({
+  id: '/envelope',
+  path: '/envelope',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContentRoute = ContentRouteImport.update({
@@ -32,30 +38,34 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/content': typeof ContentRoute
+  '/envelope': typeof EnvelopeRoute
   '/wip-envelope': typeof WipEnvelopeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/content': typeof ContentRoute
+  '/envelope': typeof EnvelopeRoute
   '/wip-envelope': typeof WipEnvelopeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/content': typeof ContentRoute
+  '/envelope': typeof EnvelopeRoute
   '/wip-envelope': typeof WipEnvelopeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/content' | '/wip-envelope'
+  fullPaths: '/' | '/content' | '/envelope' | '/wip-envelope'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/content' | '/wip-envelope'
-  id: '__root__' | '/' | '/content' | '/wip-envelope'
+  to: '/' | '/content' | '/envelope' | '/wip-envelope'
+  id: '__root__' | '/' | '/content' | '/envelope' | '/wip-envelope'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContentRoute: typeof ContentRoute
+  EnvelopeRoute: typeof EnvelopeRoute
   WipEnvelopeRoute: typeof WipEnvelopeRoute
 }
 
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/wip-envelope'
       fullPath: '/wip-envelope'
       preLoaderRoute: typeof WipEnvelopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/envelope': {
+      id: '/envelope'
+      path: '/envelope'
+      fullPath: '/envelope'
+      preLoaderRoute: typeof EnvelopeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/content': {
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContentRoute: ContentRoute,
+  EnvelopeRoute: EnvelopeRoute,
   WipEnvelopeRoute: WipEnvelopeRoute,
 }
 export const routeTree = rootRouteImport
