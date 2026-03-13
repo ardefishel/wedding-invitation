@@ -4,6 +4,7 @@ import { useNavigateWithTransition } from "../utils/transitions";
 
 import "./index.css";
 import Envelope from "@/components/Envelope";
+import { Envelope as NewEnvelope } from "@/components/NewEvelope";
 
 export const Route = createFileRoute("/")({
   component: RouteComponent,
@@ -28,17 +29,33 @@ function RouteComponent() {
 
   return (
     <div className="h-svh bg-grey-olive overflow-hidden relative">
-      <div className="max-w-xl bg-knit h-full mx-auto flex relative justify-center items-center">
-        <div className="invite-scale flex flex-col justify-center items-center">
-          <Envelope className={revealClassName} onImageLoad={handleImageLoaded} />
+      <div className="max-w-xl bg-red-500 bg-knit h-full mx-auto flex relative justify-center items-center">
+        <div className="invite-scale flex bg-green-300 flex-col justify-center items-center">
+          {/* <Envelope className={revealClassName} onImageLoad={handleImageLoaded} /> */}
+          <div className="relative w-[70%] h-[50%] max-h-[340px] rotate-6">
+            <NewEnvelope />
+            <div className="absolute bottom-0 w-fit z-10">
+              <LoadingImage
+                src="/assets/ornament-flower.webp"
+                className="absolute right-2 rotate-2 -top-18 m-auto -z-1 w-[30%] object-contain"
+                onImageLoad={handleImageLoaded}
+              />
+              <LoadingImage
+                src="/assets/envelope-stamp.webp"
+                className="absolute m-auto inset-0 z-10 -translate-y-3 size-12"
+                onImageLoad={handleImageLoaded}
+              />
+              <LoadingImage src="/assets/envelope-body.webp" className="z-100" alt="" onImageLoad={handleImageLoaded} />
+            </div>
+          </div>
           <TheWeddingTitle className={revealClassName} onImageLoad={handleImageLoaded} />
         </div>
       </div>
-      {!allImagesLoaded && (
+      {/* {!allImagesLoaded && (
         <div className="image-loading-overlay" aria-live="polite" aria-busy="true">
           <div className="image-spinner" aria-label="Loading images" />
         </div>
-      )}
+      )} */}
     </div>
   );
 }

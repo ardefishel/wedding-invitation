@@ -18,7 +18,7 @@ const Envelope = ({
             transition={{ duration: 0.6, ease: "easeOut" }}
         >
             {/* Envelope Letter */}
-            {/* <motion.div
+            <motion.div
                 className="bg-letter w-full h-100 bottom-0 z-0"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -31,7 +31,7 @@ const Envelope = ({
                     </div>
                     <span className="uppercase text-lg">You are invited to ... </span>
                 </div>
-            </motion.div> */}
+            </motion.div>
             <div className="absolute bottom-0 w-fit z-10">
                 <LoadingImage
                     src="/assets/ornament-flower.webp"
