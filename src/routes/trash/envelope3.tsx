@@ -1,10 +1,10 @@
-import { Envelope } from '@/components/NewEvelope'
+import { Envelope } from '@/components/Envelope'
 import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'motion/react'
 
 // import bgLetter from '../../public/assets/bg-letter-main.png'
 
-export const Route = createFileRoute('/envelope3')({
+export const Route = createFileRoute('/trash/envelope3')({
   component: RouteComponent,
 })
 

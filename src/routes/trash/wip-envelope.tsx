@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react'
 import './wip-envelope.css'
-export const Route = createFileRoute("/wip-envelope")({
+export const Route = createFileRoute("/trash/wip-envelope")({
     component: RouteComponent,
 });
 

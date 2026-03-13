@@ -1,11 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useNavigateWithTransition } from '../utils/transitions'
-import { LoadingImage, ThemeButton } from '.'
+import { useNavigateWithTransition } from '../../utils/transitions'
+import { LoadingImage, ThemeButton } from './index_bak'
 import { useState, useCallback } from 'react'
 
 import './content.css'
 
-export const Route = createFileRoute('/content')({
+export const Route = createFileRoute('/trash/content')({
   component: RouteComponent,
 })
 

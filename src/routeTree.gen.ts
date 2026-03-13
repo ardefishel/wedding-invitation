@@ -9,142 +9,120 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WipEnvelopeRouteImport } from './routes/wip-envelope'
-import { Route as Envelope3RouteImport } from './routes/envelope3'
-import { Route as Envelope2RouteImport } from './routes/envelope2'
-import { Route as EnvelopeRouteImport } from './routes/envelope'
-import { Route as ContentRouteImport } from './routes/content'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TrashWipEnvelopeRouteImport } from './routes/trash/wip-envelope'
+import { Route as TrashIndex_bakRouteImport } from './routes/trash/index_bak'
+import { Route as TrashEnvelope3RouteImport } from './routes/trash/envelope3'
+import { Route as TrashEnvelope2RouteImport } from './routes/trash/envelope2'
+import { Route as TrashEnvelopeRouteImport } from './routes/trash/envelope'
+import { Route as TrashContentRouteImport } from './routes/trash/content'
 
-const WipEnvelopeRoute = WipEnvelopeRouteImport.update({
-  id: '/wip-envelope',
-  path: '/wip-envelope',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Envelope3Route = Envelope3RouteImport.update({
-  id: '/envelope3',
-  path: '/envelope3',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Envelope2Route = Envelope2RouteImport.update({
-  id: '/envelope2',
-  path: '/envelope2',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EnvelopeRoute = EnvelopeRouteImport.update({
-  id: '/envelope',
-  path: '/envelope',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContentRoute = ContentRouteImport.update({
-  id: '/content',
-  path: '/content',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrashWipEnvelopeRoute = TrashWipEnvelopeRouteImport.update({
+  id: '/trash/wip-envelope',
+  path: '/trash/wip-envelope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrashIndex_bakRoute = TrashIndex_bakRouteImport.update({
+  id: '/trash/index_bak',
+  path: '/trash/index_bak',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrashEnvelope3Route = TrashEnvelope3RouteImport.update({
+  id: '/trash/envelope3',
+  path: '/trash/envelope3',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrashEnvelope2Route = TrashEnvelope2RouteImport.update({
+  id: '/trash/envelope2',
+  path: '/trash/envelope2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrashEnvelopeRoute = TrashEnvelopeRouteImport.update({
+  id: '/trash/envelope',
+  path: '/trash/envelope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrashContentRoute = TrashContentRouteImport.update({
+  id: '/trash/content',
+  path: '/trash/content',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/content': typeof ContentRoute
-  '/envelope': typeof EnvelopeRoute
-  '/envelope2': typeof Envelope2Route
-  '/envelope3': typeof Envelope3Route
-  '/wip-envelope': typeof WipEnvelopeRoute
+  '/trash/content': typeof TrashContentRoute
+  '/trash/envelope': typeof TrashEnvelopeRoute
+  '/trash/envelope2': typeof TrashEnvelope2Route
+  '/trash/envelope3': typeof TrashEnvelope3Route
+  '/trash/index_bak': typeof TrashIndex_bakRoute
+  '/trash/wip-envelope': typeof TrashWipEnvelopeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/content': typeof ContentRoute
-  '/envelope': typeof EnvelopeRoute
-  '/envelope2': typeof Envelope2Route
-  '/envelope3': typeof Envelope3Route
-  '/wip-envelope': typeof WipEnvelopeRoute
+  '/trash/content': typeof TrashContentRoute
+  '/trash/envelope': typeof TrashEnvelopeRoute
+  '/trash/envelope2': typeof TrashEnvelope2Route
+  '/trash/envelope3': typeof TrashEnvelope3Route
+  '/trash/index_bak': typeof TrashIndex_bakRoute
+  '/trash/wip-envelope': typeof TrashWipEnvelopeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/content': typeof ContentRoute
-  '/envelope': typeof EnvelopeRoute
-  '/envelope2': typeof Envelope2Route
-  '/envelope3': typeof Envelope3Route
-  '/wip-envelope': typeof WipEnvelopeRoute
+  '/trash/content': typeof TrashContentRoute
+  '/trash/envelope': typeof TrashEnvelopeRoute
+  '/trash/envelope2': typeof TrashEnvelope2Route
+  '/trash/envelope3': typeof TrashEnvelope3Route
+  '/trash/index_bak': typeof TrashIndex_bakRoute
+  '/trash/wip-envelope': typeof TrashWipEnvelopeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/content'
-    | '/envelope'
-    | '/envelope2'
-    | '/envelope3'
-    | '/wip-envelope'
+    | '/trash/content'
+    | '/trash/envelope'
+    | '/trash/envelope2'
+    | '/trash/envelope3'
+    | '/trash/index_bak'
+    | '/trash/wip-envelope'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/content'
-    | '/envelope'
-    | '/envelope2'
-    | '/envelope3'
-    | '/wip-envelope'
+    | '/trash/content'
+    | '/trash/envelope'
+    | '/trash/envelope2'
+    | '/trash/envelope3'
+    | '/trash/index_bak'
+    | '/trash/wip-envelope'
   id:
     | '__root__'
     | '/'
-    | '/content'
-    | '/envelope'
-    | '/envelope2'
-    | '/envelope3'
-    | '/wip-envelope'
+    | '/trash/content'
+    | '/trash/envelope'
+    | '/trash/envelope2'
+    | '/trash/envelope3'
+    | '/trash/index_bak'
+    | '/trash/wip-envelope'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ContentRoute: typeof ContentRoute
-  EnvelopeRoute: typeof EnvelopeRoute
-  Envelope2Route: typeof Envelope2Route
-  Envelope3Route: typeof Envelope3Route
-  WipEnvelopeRoute: typeof WipEnvelopeRoute
+  TrashContentRoute: typeof TrashContentRoute
+  TrashEnvelopeRoute: typeof TrashEnvelopeRoute
+  TrashEnvelope2Route: typeof TrashEnvelope2Route
+  TrashEnvelope3Route: typeof TrashEnvelope3Route
+  TrashIndex_bakRoute: typeof TrashIndex_bakRoute
+  TrashWipEnvelopeRoute: typeof TrashWipEnvelopeRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/wip-envelope': {
-      id: '/wip-envelope'
-      path: '/wip-envelope'
-      fullPath: '/wip-envelope'
-      preLoaderRoute: typeof WipEnvelopeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/envelope3': {
-      id: '/envelope3'
-      path: '/envelope3'
-      fullPath: '/envelope3'
-      preLoaderRoute: typeof Envelope3RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/envelope2': {
-      id: '/envelope2'
-      path: '/envelope2'
-      fullPath: '/envelope2'
-      preLoaderRoute: typeof Envelope2RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/envelope': {
-      id: '/envelope'
-      path: '/envelope'
-      fullPath: '/envelope'
-      preLoaderRoute: typeof EnvelopeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/content': {
-      id: '/content'
-      path: '/content'
-      fullPath: '/content'
-      preLoaderRoute: typeof ContentRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -152,16 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/trash/wip-envelope': {
+      id: '/trash/wip-envelope'
+      path: '/trash/wip-envelope'
+      fullPath: '/trash/wip-envelope'
+      preLoaderRoute: typeof TrashWipEnvelopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trash/index_bak': {
+      id: '/trash/index_bak'
+      path: '/trash/index_bak'
+      fullPath: '/trash/index_bak'
+      preLoaderRoute: typeof TrashIndex_bakRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trash/envelope3': {
+      id: '/trash/envelope3'
+      path: '/trash/envelope3'
+      fullPath: '/trash/envelope3'
+      preLoaderRoute: typeof TrashEnvelope3RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trash/envelope2': {
+      id: '/trash/envelope2'
+      path: '/trash/envelope2'
+      fullPath: '/trash/envelope2'
+      preLoaderRoute: typeof TrashEnvelope2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trash/envelope': {
+      id: '/trash/envelope'
+      path: '/trash/envelope'
+      fullPath: '/trash/envelope'
+      preLoaderRoute: typeof TrashEnvelopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trash/content': {
+      id: '/trash/content'
+      path: '/trash/content'
+      fullPath: '/trash/content'
+      preLoaderRoute: typeof TrashContentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ContentRoute: ContentRoute,
-  EnvelopeRoute: EnvelopeRoute,
-  Envelope2Route: Envelope2Route,
-  Envelope3Route: Envelope3Route,
-  WipEnvelopeRoute: WipEnvelopeRoute,
+  TrashContentRoute: TrashContentRoute,
+  TrashEnvelopeRoute: TrashEnvelopeRoute,
+  TrashEnvelope2Route: TrashEnvelope2Route,
+  TrashEnvelope3Route: TrashEnvelope3Route,
+  TrashIndex_bakRoute: TrashIndex_bakRoute,
+  TrashWipEnvelopeRoute: TrashWipEnvelopeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

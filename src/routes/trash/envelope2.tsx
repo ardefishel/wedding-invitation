@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { delay, LayoutGroup, motion, useMotionValue, Variants } from 'motion/react'
 import { useState } from 'react';
 
-export const Route = createFileRoute('/envelope2')({
+export const Route = createFileRoute('/trash/envelope2')({
     component: RouteComponent,
 })
 

@@ -10,7 +10,7 @@ import {
 } from 'motion/react'
 import { useEffect, useState, type ReactNode } from 'react'
 
-export const Route = createFileRoute('/envelope')({
+export const Route = createFileRoute('/trash/envelope')({
     component: EnvelopeRouteComponent,
 })
 
