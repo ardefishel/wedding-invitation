@@ -19,12 +19,12 @@ const imageUrls = [
     "assets/ornament-divider.png",
     "assets/ornament-flower.webp",
     "assets/ornament-necklace.png",
-    "assets/ornament-ring.png,"
+    "assets/ornament-ring.png"
 ]
 export default function () {
     const loadImagePromises = imageUrls.map((src) => {
         return new Promise((resolve, reject) => {
-            console.log('Load image source: ', src)
+            // console.log('Load image source: ', src)
             const img = new Image()
             img.onload = () => resolve(img)
             img.onerror = reject

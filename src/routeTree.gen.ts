@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ComponentsRouteImport } from './routes/components'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TrashWipEnvelopeRouteImport } from './routes/trash/wip-envelope'
 import { Route as TrashIndex_bakRouteImport } from './routes/trash/index_bak'
@@ -17,6 +18,11 @@ import { Route as TrashEnvelope2RouteImport } from './routes/trash/envelope2'
 import { Route as TrashEnvelopeRouteImport } from './routes/trash/envelope'
 import { Route as TrashContentRouteImport } from './routes/trash/content'
 
+const ComponentsRoute = ComponentsRouteImport.update({
+  id: '/components',
+  path: '/components',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -55,6 +61,7 @@ const TrashContentRoute = TrashContentRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/components': typeof ComponentsRoute
   '/trash/content': typeof TrashContentRoute
   '/trash/envelope': typeof TrashEnvelopeRoute
   '/trash/envelope2': typeof TrashEnvelope2Route
@@ -64,6 +71,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/components': typeof ComponentsRoute
   '/trash/content': typeof TrashContentRoute
   '/trash/envelope': typeof TrashEnvelopeRoute
   '/trash/envelope2': typeof TrashEnvelope2Route
@@ -74,6 +82,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/components': typeof ComponentsRoute
   '/trash/content': typeof TrashContentRoute
   '/trash/envelope': typeof TrashEnvelopeRoute
   '/trash/envelope2': typeof TrashEnvelope2Route
@@ -85,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/components'
     | '/trash/content'
     | '/trash/envelope'
     | '/trash/envelope2'
@@ -94,6 +104,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/components'
     | '/trash/content'
     | '/trash/envelope'
     | '/trash/envelope2'
@@ -103,6 +114,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/components'
     | '/trash/content'
     | '/trash/envelope'
     | '/trash/envelope2'
@@ -113,6 +125,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ComponentsRoute: typeof ComponentsRoute
   TrashContentRoute: typeof TrashContentRoute
   TrashEnvelopeRoute: typeof TrashEnvelopeRoute
   TrashEnvelope2Route: typeof TrashEnvelope2Route
@@ -123,6 +136,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/components': {
+      id: '/components'
+      path: '/components'
+      fullPath: '/components'
+      preLoaderRoute: typeof ComponentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -177,6 +197,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ComponentsRoute: ComponentsRoute,
   TrashContentRoute: TrashContentRoute,
   TrashEnvelopeRoute: TrashEnvelopeRoute,
   TrashEnvelope2Route: TrashEnvelope2Route,

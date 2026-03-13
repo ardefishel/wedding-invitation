@@ -1,6 +1,8 @@
 import { HeadContent, Scripts, createRootRoute, Outlet } from '@tanstack/react-router'
 
 import appCss from '../styles.css?url'
+import usePreloadImage from '@/hooks/usePreloadImage'
+import Spinner from '@/components/Spinner'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -28,13 +30,14 @@ export const Route = createRootRoute({
 })
 
 function RootDocument() {
+  const { isImageLoaded } = usePreloadImage()
   return (
     <html lang="en">
       <head>
         <HeadContent />
       </head>
       <body>
-        <Outlet />
+        {isImageLoaded ? <Outlet /> : <Spinner />}
         <Scripts />
       </body>
     </html>

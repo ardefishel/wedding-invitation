@@ -1,87 +1,127 @@
-import { delay, motion, useMotionValue } from "motion/react"
-import { useEffect, useLayoutEffect, useRef, useState } from "react"
+import { delay } from "motion/react";
+import { useMotionValue, motion } from "motion/react";
+import { useRef, useState, useEffect } from "react";
 
-export function Envelope() {
-    const imageRef = useRef<HTMLImageElement>(null)
-    const [padding, setPadding] = useState<number>(0)
-    const [imgLoaded, setImgLoaded] = useState(false)
+export function Envelope({ className }: { className?: string }) {
+    const imageRef = useRef<HTMLImageElement>(null);
+    const envelopeBodyRef = useRef<HTMLDivElement | null>(null);
+  
+    const zIndex = useMotionValue(100);
 
-    const measurePadding = () => {
-        if (imageRef.current) {
-            const computedPadding = imageRef.current.clientHeight // adjust factor
-            setPadding(computedPadding)
-        }
-    }
-
-    useLayoutEffect(() => {
-        if (imgLoaded) {
-            measurePadding()
-        }
-    }, [imgLoaded])
-
+    const [flapYPosition, setFlapYPosition] = useState(0);
+    const [containerPadding, setContainerPadding] = useState(0);
+  
+    useEffect(() => {
+      if (envelopeBodyRef.current) {
+        setFlapYPosition(envelopeBodyRef.current.clientHeight);
+      }
+    }, []);
+  
+    useEffect(() => {
+      if (imageRef.current) {
+        setContainerPadding(imageRef.current.clientHeight);
+      }
+    }, []);
+  
     return (
-        <div style={{ paddingTop: padding }}>
-            <div className='relative flex-col bg-gray-50 justify-end items-end'>
-                <EnvelopeFlap setImgLoaded={setImgLoaded} measurePadding={measurePadding} imageRef={imageRef} />
-                <EnvelopeBody />
-                <EnvelopeInner />
-            </div>
-        </div>
-    )
-}
-function EnvelopeFlap({ imageRef, setImgLoaded, measurePadding }: { imageRef: React.RefObject<HTMLImageElement | null>, setImgLoaded: React.Dispatch<React.SetStateAction<boolean>>, measurePadding: () => void }) {
-    const zIndex = useMotionValue(100)
-    return (
-        <motion.div
+      <div
+        className={`w-fit overflow-hidden ${className}`}
+        style={{
+          paddingTop: `calc(${containerPadding}px + 10px)`,
+        }}
+      >
+        <div
+          className="relative bg-white w-80 "
+          style={{ containerType: "inline-size", aspectRatio: "800 / 563" }}
+        >
+          {/* inner */}
+          <motion.div
+            initial={{
+              height: "55cqi",
+            }}
             animate={{
-                rotateX: 180
+              height: "105cqi",
+            }}
+            transition={{ duration: 2, delay: 0.5 }}
+            className="absolute bottom-0 left-0 right-0 h-120 z-50"
+            style={{
+              backgroundImage: "url(assets/bg-letter-vertical.png)",
+              backgroundPosition: "100% auto",
+              backgroundSize: "100% auto",
+              backgroundRepeat: "no-repeat",
+              containerType: "inline-size",
+            }}
+          >
+            <div className="flex relative flex-col -rotate-2 mx-auto -translate-x-[4cqi] mt-[12cqi]">
+              <div
+                className="w-full text-center leading-none "
+                style={{ containerType: "inline-size" }}
+              >
+                <h3 className="font-parisienne text-[8cqi]">Dear,</h3>
+                <h2 className="uppercase text-[12cqi]">
+                  Guest <br /> Name
+                </h2>
+              </div>
+              <span className="uppercase text-[4cqi] text-center ">
+                You are invited to ...{" "}
+              </span>
+              <img
+                className="absolute right-[8cqi] -bottom-[20cqi] rotate-6 my-auto w-[24cqi]"
+                src="/assets/ornament-flower.webp"
+              />
+            </div>
+          </motion.div>
+  
+          {/* body */}
+          <div
+            ref={envelopeBodyRef}
+            className="absolute bottom-0 left-0 right-0 z-100"
+          >
+            <img className="object-contain " src="assets/envelope-body.webp" />
+            <div className="absolute w-[14cqi]  -translate-y-[4cqi] m-auto h-full inset-0 flex justify-center">
+              <motion.img
+                  initial={{
+                      rotate: 40
+                  }}
+                  animate={{
+                      rotate: 0
+                  }}
+                  transition={{
+                      duration: 1
+                  }}
+              className="object-contain" src="assets/envelope-stamp.webp" />
+            </div>
+          </div>
+  
+          {/* flap */}
+          <motion.div
+            className="absolute translate-y-full left-0 right-0 w-full perspective-midrange origin-top transform-3d bg-amber-100"
+            style={{
+              bottom: flapYPosition,
+              zIndex,
+            }}
+            animate={{
+              rotateX: 180,
             }}
             transition={{
-                duration: 2
+              duration: 2,
             }}
             onAnimationStart={() => {
-                delay(() => zIndex.set(1), 800)
+              delay(() => zIndex.set(1), 800);
             }}
-            className='relative perspective-midrange origin-top transform-3d' style={{ zIndex }}>
-            <img onLoad={() => {
-                setImgLoaded(true)
-                measurePadding()
-            }} ref={imageRef} className='absolute inset-0 backface-hidden z-2' src='assets/envelope-top.svg' />
-            <img className='absolute inset-0 rotate-z-180 rotate-x-180 backface-hidden z-1' src='assets/envelope-top-back.svg' />
-        </motion.div>
-    )
-}
-
-function EnvelopeBody() {
-    return (
-        <div className='relative z-100' style={{ containerType: 'inline-size' }}>
-            <img className='content' src='assets/envelope-body.webp' />
-            <div className='absolute w-[14cqi]  -translate-y-[4cqi] m-auto h-full inset-0 flex justify-center'>
-                <img className='object-contain' src='assets/envelope-stamp.webp' />
-            </div>
+          >
+            <img
+              ref={imageRef}
+              className="absolute inset-0 backface-hidden z-2"
+              src="assets/envelope-top.svg"
+            />
+            <img
+              className="absolute inset-0 rotate-z-180 rotate-x-180 backface-hidden"
+              src="assets/envelope-top-back.svg"
+            />
+          </motion.div>
         </div>
-    )
-}
-
-function EnvelopeInner() {
-    return (
-        <motion.div className='absolute inset-0 w-full z-50'>
-            <motion.div animate={{ y: -120, opacity: 1 }} transition={{ delay: 0.5, duration: 1, ease: 'easeIn' }} className=' w-full bg-no-repeat' style={{
-                backgroundImage: 'url(assets/bg-letter-vertical.png)',
-                backgroundPositionX: 4,
-                backgroundSize: '100% auto',
-                containerType: 'inline-size',
-                aspectRatio: '800 / 485'
-            }}>
-                <div className="flex flex-col -rotate-2 mx-auto mt-8">
-                    <div className="w-full text-center leading-tight" style={{ containerType: 'inline-size' }}>
-                        <h3 className="font-parisienne text-[6cqi]" >Dear</h3>
-                        <h2 className="uppercase text-[8cqi]">Guest <br /> Name</h2>
-                    </div>
-                    <span className="uppercase text-center ">You are invited to ... </span>
-                </div>
-                <img className='absolute right-[6cqi] bottom-0 top-[8cqi] rotate-4 my-auto w-[24cqi]' src='/assets/ornament-flower.webp' />
-            </motion.div>
-        </motion.div>
-    )
-}
+      </div>
+    );
+  }
+  
