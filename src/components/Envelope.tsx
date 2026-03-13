@@ -2,15 +2,26 @@ import { ClientOnly } from "@tanstack/react-router";
 import { delay } from "motion/react";
 import { useMotionValue, motion } from "motion/react";
 
-const FLAP_RATIO = 297 / 800
+const FLAP_RATIO = 297 / 800;
 
 export function Envelope({ className }: { className?: string }) {
-
   const zIndex = useMotionValue(100);
 
   return (
     <ClientOnly>
-      <div
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 8,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 1,
+          delayChildren: 2
+        }}
         className={`w-fit overflow-hidden ${className}`}
         style={{
           paddingTop: `calc( ${FLAP_RATIO} * 100% + 10px)`,
@@ -23,7 +34,7 @@ export function Envelope({ className }: { className?: string }) {
           {/* inner */}
           <motion.div
             initial={{
-              height: "55cqi",
+              height: "65cqi",
             }}
             animate={{
               height: "105cqi",
@@ -31,7 +42,7 @@ export function Envelope({ className }: { className?: string }) {
             transition={{ duration: 2, delay: 0.5 }}
             className="absolute bottom-0 left-0 right-0 h-120 z-50"
             style={{
-              backgroundImage: 'url(/assets/bg-letter-vertical.png)',
+              backgroundImage: "url(/assets/bg-letter-vertical.png)",
               backgroundPosition: "100% auto",
               backgroundSize: "100% auto",
               backgroundRepeat: "no-repeat",
@@ -52,7 +63,7 @@ export function Envelope({ className }: { className?: string }) {
                 You are invited to ...{" "}
               </span>
               <img
-                className="absolute right-[8cqi] -bottom-[20cqi] rotate-6 my-auto w-[24cqi]"
+                className="absolute right-[8cqi] -bottom-[20cqi] rotate-6 my-auto w-[26cqi]"
                 alt=""
                 src="/assets/ornament-flower.webp"
               />
@@ -60,10 +71,12 @@ export function Envelope({ className }: { className?: string }) {
           </motion.div>
 
           {/* body */}
-          <div
-            className="absolute bottom-0 left-0 right-0 z-100"
-          >
-            <img className="object-contain " alt="" src="/assets/envelope-body.webp" />
+          <div className="absolute bottom-0 left-0 right-0 z-100">
+            <img
+              className="object-contain "
+              alt=""
+              src="/assets/envelope-body.webp"
+            />
             <div className="absolute w-[14cqi]  -translate-y-[4cqi] m-auto h-full inset-0 flex justify-center">
               <motion.img
                 initial={{
@@ -111,7 +124,7 @@ export function Envelope({ className }: { className?: string }) {
             />
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </ClientOnly>
   );
 }

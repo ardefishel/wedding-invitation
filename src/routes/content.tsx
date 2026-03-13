@@ -1,11 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useNavigateWithTransition } from '../../utils/transitions'
-import { LoadingImage, ThemeButton } from './index_bak'
+import { useNavigateWithTransition } from '../utils/transitions'
+
 import { useState, useCallback } from 'react'
 
 import './content.css'
 
-export const Route = createFileRoute('/trash/content')({
+export const Route = createFileRoute('/content')({
   component: RouteComponent,
 })
 
@@ -19,7 +19,6 @@ function RouteComponent() {
     setLoadedImages((value) => (value < totalImages ? value + 1 : value));
   }, [totalImages]);
 
-  const allImagesLoaded = loadedImages >= totalImages;
 
   return (
     <div className='bg-[#D7C5B9] py-8 sm:py-16 min-h-screen'>
@@ -33,11 +32,11 @@ function RouteComponent() {
             <h3 className="font-noto-serif uppercase text-lg sm:text-xl tracking-[0.4em] text-[#5a5a5a] mb-2">The Wedding of</h3>
             <div className="font-parisienne text-6xl sm:text-7xl flex justify-center items-center text-[#3a3a3a]">
               <span className="flex-1 text-right">Thalita</span>
-              <LoadingImage
+              {/* <LoadingImage
                 src="/assets/black-doves.png"
                 className="w-[28%] -mx-1 object-contain translate-y-3"
                 onImageLoad={handleImageLoaded}
-              />
+              /> */}
               <span className="flex-1 text-left">Rama</span>
             </div>
           </div>
@@ -51,11 +50,11 @@ function RouteComponent() {
           {/* Couple Photo + Ornament */}
           <div className='flex flex-col items-center -mt-4 -mx-4'>
             <div className='relative w-full translate-x-4'>
-              <LoadingImage
+              {/* <LoadingImage
                 className='mx-auto w-full'
                 src='/assets/main-frame-couples.png'
                 onImageLoad={handleImageLoaded}
-              />
+              /> */}
             </div>
           </div>
 
@@ -121,18 +120,18 @@ function RouteComponent() {
             <span className='font-noto-serif uppercase text-sm tracking-widest text-[#5a5a5a]'>Akad</span>
             <span className='font-noto-serif text-base font-bold text-[#3a3a3a]'>8.00 - 11.00 WIB</span>
 
-            <LoadingImage
+            {/* <LoadingImage
               src="/assets/wedding-ring-picture.png"
               alt=""
               className='w-16 sm:w-20 my-2 object-contain'
               onImageLoad={handleImageLoaded}
-            />
+            /> */}
 
             <span className='font-kalam font-bold text-sm text-[#3a3a3a] uppercase'>Dammara Space Bogor</span>
             <span className='font-kalam italic text-sm text-[#5a5a5a]'>Katulampa, Bogor Timur, Bogor City, West Java 16144</span>
 
             <div className='mt-4'>
-              <ThemeButton text='Google Maps' />
+              {/* <ThemeButton text='Google Maps' /> */}
             </div>
           </div>
 
@@ -147,10 +146,10 @@ function RouteComponent() {
 
           {/* Gallery: three oval photos */}
           <div className='flex justify-center items-end gap-3 mb-8'>
-            <LoadingImage
+            {/* <LoadingImage
               src='/assets/couples-2.png'
               onImageLoad={handleImageLoaded}
-            />
+            /> */}
           </div>
 
           <p className='font-parisienne text-xl sm:text-2xl text-fuchsia-plum'>
