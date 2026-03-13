@@ -1,46 +1,53 @@
-import { useState, useEffect } from "react"
+import { useEffect, useState } from 'react'
 
 const imageUrls = [
-    "assets/bg-knit.webp",
-    "assets/bg-letter-horizontal.png",
-    "assets/bg-letter-vertical.png",
-    "assets/bg-texture.webp",
-    "assets/border-section.png",
-    "assets/bordern-btn.png",
-    "assets/divider-vertical.png",
-    "assets/envelope-body.webp",
-    "assets/envelope-stamp.webp",
-    "assets/envelope-top-back.svg",
-    "assets/envelope-top.svg",
-    "assets/heading-doves-black.png",
-    "assets/heading-doves-pink.png",
-    "assets/hero-1.png",
-    "assets/hero-2.png",
-    "assets/ornament-divider.png",
-    "assets/ornament-flower.webp",
-    "assets/ornament-necklace.png",
-    "assets/ornament-ring.png"
+  '/assets/bg-knit.webp',
+  '/assets/bg-letter-horizontal.png',
+  '/assets/bg-letter-vertical.png',
+  '/assets/bg-texture.webp',
+  '/assets/border-section.png',
+  '/assets/bordern-btn.png',
+  '/assets/divider-vertical.png',
+  '/assets/envelope-body.webp',
+  '/assets/envelope-stamp.webp',
+  '/assets/envelope-top-back.svg',
+  '/assets/envelope-top.svg',
+  '/assets/heading-doves-black.png',
+  '/assets/heading-doves-pink.png',
+  '/assets/hero-1.png',
+  '/assets/hero-2.png',
+  '/assets/ornament-divider.png',
+  '/assets/ornament-flower.webp',
+  '/assets/ornament-necklace.png',
+  '/assets/ornament-ring.png',
 ]
-export default function () {
-    const loadImagePromises = imageUrls.map((src) => {
-        return new Promise((resolve, reject) => {
-            // console.log('Load image source: ', src)
-            const img = new Image()
-            img.onload = () => resolve(img)
-            img.onerror = reject
-            img.src = src
-        })
+
+function preloadImage(src: string) {
+  return new Promise<void>((resolve) => {
+    const image = new Image()
+
+    image.onload = () => resolve()
+    image.onerror = () => resolve()
+    image.src = src
+  })
+}
+
+export default function usePreloadImage() {
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  useEffect(() => {
+    let isMounted = true
+
+    Promise.all(imageUrls.map(preloadImage)).then(() => {
+      if (isMounted) {
+        setIsLoaded(true)
+      }
     })
 
-    const [isImageLoaded, setIsImageLoaded] = useState(false)
-    useEffect(() => {
-        Promise.all(loadImagePromises).then(() => {
-            setIsImageLoaded(true)
-        })
-            .catch((err) => {
-                console.log('Images failed to load', err)
-                setIsImageLoaded(true)
-            })
-    }, [])
-    return { isImageLoaded }
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
+  return { isLoaded }
 }

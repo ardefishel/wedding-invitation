@@ -1,4 +1,4 @@
-import { HeadContent, Scripts, createRootRoute, Outlet } from '@tanstack/react-router'
+import { ClientOnly, HeadContent, Outlet, Scripts, createRootRoute } from '@tanstack/react-router'
 
 import appCss from '../styles.css?url'
 import usePreloadImage from '@/hooks/usePreloadImage'
@@ -30,16 +30,23 @@ export const Route = createRootRoute({
 })
 
 function RootDocument() {
-  const { isImageLoaded } = usePreloadImage()
   return (
     <html lang="en">
       <head>
         <HeadContent />
       </head>
-      <body>
-        {isImageLoaded ? <Outlet /> : <Spinner />}
+      <body className='bg-grey-olive'>
+        <ClientOnly fallback={<Spinner />}>
+          <ClientApp />
+        </ClientOnly>
         <Scripts />
       </body>
     </html>
   )
+}
+
+function ClientApp() {
+  const { isLoaded } = usePreloadImage()
+
+  return isLoaded ? <Outlet /> : <Spinner />
 }
