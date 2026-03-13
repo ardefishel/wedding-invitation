@@ -67,7 +67,7 @@ function EnvelopeInner() {
     return (
         <motion.div className='absolute inset-0 w-full z-50'>
             <motion.div animate={{ y: -120, opacity: 1 }} transition={{ delay: 0.5, duration: 1, ease: 'easeIn' }} className=' w-full bg-no-repeat' style={{
-                backgroundImage: 'url(assets/bg-letter-main.png)',
+                backgroundImage: 'url(assets/bg-letter-vertical.png)',
                 backgroundPositionX: 4,
                 backgroundSize: '100% auto',
                 containerType: 'inline-size',
