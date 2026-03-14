@@ -35,7 +35,7 @@ function RouteComponent() {
             ease: "easeInOut",
           }}
           className="absolute left-[50%] -translate-y-[70%] object-cover w-90 z-100"
-          src="/assets/ornament-necklace.png"
+          src="/assets/ornament-necklace.webp"
         />
         <InvitationLetter className="-rotate-6" />
       </div>

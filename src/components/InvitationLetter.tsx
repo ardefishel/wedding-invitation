@@ -16,7 +16,7 @@ export function InvitationLetter({ className }: { className?: string }) {
       }}
       className={`w-90 h-auto py-[12cqi]  text-fuchsia-plum ${className}`}
       style={{
-        backgroundImage: "url(/assets/bg-letter-vertical.png)",
+        backgroundImage: "url(/assets/bg-letter-vertical.webp)",
         backgroundPosition: "100% auto",
         backgroundSize: "100% auto",
         backgroundRepeat: "no-repeat",
@@ -29,7 +29,7 @@ export function InvitationLetter({ className }: { className?: string }) {
       <div className="font-parisienne text-[10cqi] flex justify-center items-center mb-8">
         <span>Thalita</span>
         <img
-          src="/assets/doves-pink.png"
+          src="/assets/doves-pink.webp"
           className="w-[24cqi] mx-[-2cqi] object-contain translate-y-[2cqi]"
         />
         <span>Rama</span>
@@ -47,7 +47,7 @@ export function InvitationLetter({ className }: { className?: string }) {
           }}
           className="uppercase text-[#2b2b2b]  w-full inline-block text-[4cqi] py-[2cqi]"
           style={{
-            backgroundImage: "url(/assets/border-btn.png)",
+            backgroundImage: "url(/assets/border-btn.webp)",
             backgroundRepeat: "no-repeat",
             backgroundSize: "contain",
             backgroundPosition: "center",

@@ -230,7 +230,7 @@ function RouteComponent() {
           {/* Ornament Divider */}
           <div className='mt-10'>
             <img
-              src='/assets/ornament-divider.png'
+              src='/assets/ornament-divider.webp'
               alt=''
               className='mx-auto w-64 sm:w-72'
             />

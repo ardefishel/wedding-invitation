@@ -42,7 +42,7 @@ export function Envelope({ className }: { className?: string }) {
             transition={{ duration: 2, delay: 0.5 }}
             className="absolute bottom-0 left-0 right-0 h-120 z-50"
             style={{
-              backgroundImage: "url(/assets/bg-letter-vertical.png)",
+              backgroundImage: "url(/assets/bg-letter-vertical.webp)",
               backgroundPosition: "100% auto",
               backgroundSize: "100% auto",
               backgroundRepeat: "no-repeat",
