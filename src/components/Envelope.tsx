@@ -1,6 +1,7 @@
 import { ClientOnly } from "@tanstack/react-router";
 import { delay } from "motion/react";
 import { useMotionValue, motion } from "motion/react";
+import { twMerge } from "tailwind-merge";
 
 const FLAP_RATIO = 297 / 800;
 
@@ -22,7 +23,7 @@ export function Envelope({ className }: { className?: string }) {
           duration: 1,
           delayChildren: 2
         }}
-        className={`w-fit overflow-hidden ${className}`}
+        className={twMerge("w-fit overflow-hidden", className)}
         style={{
           paddingTop: `calc( ${FLAP_RATIO} * 100% + 10px)`,
         }}

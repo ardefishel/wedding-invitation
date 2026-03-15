@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
+import { twMerge } from "tailwind-merge";
 export function InvitationLetter({ className }: { className?: string }) {
   return (
     <motion.div
@@ -14,7 +15,7 @@ export function InvitationLetter({ className }: { className?: string }) {
       transition={{
         duration: 2,
       }}
-      className={`w-90 h-auto py-[12cqi]  text-fuchsia-plum ${className}`}
+      className={twMerge("w-90 h-auto py-[12cqi] text-fuchsia-plum", className)}
       style={{
         backgroundImage: "url(/assets/bg-letter-vertical.webp)",
         backgroundPosition: "100% auto",
