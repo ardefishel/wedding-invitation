@@ -210,7 +210,7 @@ const PaperSection = ({
 
 const FormSection = () => {
   return (
-    <PaperSection className="text-center px-8 pt-10 pb-18 -mt-4">
+    <PaperSection className="text-center px-4 pt-10 pb-18 -mt-4">
       {/* RSVP Heading */}
       <h2 className="font-noto-serif text-2xl sm:text-3xl tracking-[0.3em] mb-8 text-[#3a3a3a]">
         RSVP
@@ -258,21 +258,21 @@ const FormSection = () => {
             Status:
           </label>
           <div className="flex items-center gap-5">
-            <label className="flex items-center gap-2 cursor-pointer font-noto-serif text-sm text-[#3a3a3a]">
+            <label className="flex items-center gap-2 cursor-pointer font-noto-serif text-xs text-[#3a3a3a]">
               <input
                 type="radio"
                 name="status"
                 value="hadir"
-                className="appearance-none w-7 h-7 rounded-full border-2 border-black bg-[#e8b4be] checked:bg-fuchsia-plum checked:border-black transition-colors shrink-0"
+                className="appearance-none w-6 h-6 rounded-full border-2 border-black bg-[#e8b4be] checked:bg-fuchsia-plum checked:border-black transition-colors shrink-0"
               />
               Akan Hadir
             </label>
-            <label className="flex items-center gap-2 cursor-pointer font-noto-serif text-sm text-[#3a3a3a]">
+            <label className="flex items-center gap-2 cursor-pointer font-noto-serif text-xs text-[#3a3a3a]">
               <input
                 type="radio"
                 name="status"
                 value="tidak-hadir"
-                className="appearance-none w-7 h-7 rounded-full border-2 border-black bg-[#e8b4be] checked:bg-fuchsia-plum checked:border-black transition-colors shrink-0"
+                className="appearance-none w-6 h-6 rounded-full border-2 border-black bg-[#e8b4be] checked:bg-fuchsia-plum checked:border-black transition-colors shrink-0"
               />
               Tidak Bisa Hadir
             </label>
