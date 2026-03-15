@@ -12,8 +12,11 @@ export const Route = createFileRoute("/content")({
 
 function RouteComponent() {
   return (
-    <div
-      className="h-dvh overflow-y-scroll no-scrollbar py-8"
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="h-dvh overflow-y-scroll no-scrollbar py-8 mx-auto"
       style={{
         backgroundImage: "url(/assets/bg-texture.webp)",
         backgroundRepeat: "no-repeat",
@@ -22,7 +25,7 @@ function RouteComponent() {
       }}
     >
       {/* wrapper */}
-      <div className="max-w-md mx-4">
+      <div className="max-w-md mx-4 md:mx-auto">
         <PaperSection className=" px-2">
           <h3 className="font-noto-serif text-center uppercase text-[4cqi] mt-4">
             The Wedding of
@@ -184,7 +187,7 @@ function RouteComponent() {
         <FormSection />
         <WishesSection />
       </div>
-    </div>
+    </motion.div>
   );
 }
 

@@ -1,7 +1,12 @@
-import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { twMerge } from "tailwind-merge";
-export function InvitationLetter({ className }: { className?: string }) {
+
+interface InvitationLetterProps {
+  className?: string;
+  onOpen?: () => void;
+}
+
+export function InvitationLetter({ className, onOpen }: InvitationLetterProps) {
   return (
     <motion.div
       initial={{
@@ -35,28 +40,27 @@ export function InvitationLetter({ className }: { className?: string }) {
         />
         <span>Rama</span>
       </div>
-      <Link to="/content">
-        <motion.button
-          animate={{
-            x: [0, -4, 4, -4, 4, 0],
-          }}
-          transition={{
-            duration: 0.5,
-            repeat: Infinity,
-            repeatDelay: 2.5,
-            ease: "easeInOut",
-          }}
-          className="uppercase text-[#2b2b2b]  w-full inline-block text-[4cqi] py-[2cqi]"
-          style={{
-            backgroundImage: "url(/assets/border-btn.webp)",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "contain",
-            backgroundPosition: "center",
-          }}
-        >
-          Open Invitation
-        </motion.button>
-      </Link>
+      <motion.button
+        onClick={onOpen}
+        animate={{
+          x: [0, -4, 4, -4, 4, 0],
+        }}
+        transition={{
+          duration: 0.5,
+          repeat: Infinity,
+          repeatDelay: 2.5,
+          ease: "easeInOut",
+        }}
+        className="uppercase text-[#2b2b2b]  w-full inline-block text-[4cqi] py-[2cqi]"
+        style={{
+          backgroundImage: "url(/assets/border-btn.webp)",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "contain",
+          backgroundPosition: "center",
+        }}
+      >
+        Open Invitation
+      </motion.button>
     </motion.div>
   );
 }

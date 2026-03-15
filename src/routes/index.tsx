@@ -2,6 +2,8 @@ import { Envelope } from "@/components/Envelope";
 import { InvitationLetter } from "@/components/InvitationLetter";
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "motion/react";
+import { useState } from "react";
+import { useNavigateWithTransition } from "@/utils/transitions";
 
 export const Route = createFileRoute("/")({
   component: RouteComponent,
@@ -9,14 +11,36 @@ export const Route = createFileRoute("/")({
 });
 
 function RouteComponent() {
+  const [isLeaving, setIsLeaving] = useState(false);
+  const { navigate } = useNavigateWithTransition();
+
+  const handleOpen = () => {
+    if (isLeaving) return;
+    setIsLeaving(true);
+  };
+
   return (
-    <div
+    <motion.div
       className="flex h-dvh flex-col items-center justify-center overflow-hidden bg-grey-olive"
       style={{
         backgroundImage: "url(/assets/bg-knit.webp)",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "contain",
+      }}
+      animate={
+        isLeaving
+          ? { opacity: 0, scale: 1.08 }
+          : { opacity: 1, scale: 1 }
+      }
+      transition={{
+        duration: 0.7,
+        ease: "easeInOut",
+      }}
+      onAnimationComplete={() => {
+        if (isLeaving) {
+          navigate("/content");
+        }
       }}
     >
       <div className="relative my-auto -translate-y-4">
@@ -37,8 +61,8 @@ function RouteComponent() {
           className="absolute left-[50%] -translate-y-[70%] object-cover w-90 z-100"
           src="/assets/ornament-necklace.webp"
         />
-        <InvitationLetter className="-rotate-6" />
+        <InvitationLetter className="-rotate-6" onOpen={handleOpen} />
       </div>
-    </div>
+    </motion.div>
   );
 }
