@@ -101,7 +101,7 @@ function RouteComponent() {
           </h2>
 
           {/* Love Story Paragraphs */}
-          <div className="font-kalam text-sm leading-relaxed font-semibold text-[#4a4a4a] max-w-sm mx-auto space-y-4 mb-12">
+          <div className="font-kalam text-sm leading-relaxed text-[#4a4a4a] max-w-sm mx-auto space-y-4 mb-12">
             <p>
               Kisah ini bermula di SDIT Aliya. Dua hati kecil yang mengenal suka
               dengan cara paling sederhana. Lalu kami tumbuh, berpisah, dan
