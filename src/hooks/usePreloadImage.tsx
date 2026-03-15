@@ -20,6 +20,7 @@ const imageUrls = [
   '/assets/ornament-flower.webp',
   '/assets/ornament-necklace.webp',
   '/assets/ornament-ring.webp',
+  '/assets/bg-letter-vertical-2.webp'
 ]
 
 function preloadImage(src: string) {
