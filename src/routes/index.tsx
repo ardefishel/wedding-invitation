@@ -21,7 +21,7 @@ function RouteComponent() {
 
   return (
     <motion.div
-      className="flex h-dvh flex-col items-center justify-center overflow-hidden bg-grey-olive"
+      className="bg-grey-olive flex h-dvh flex-col items-center justify-center overflow-hidden"
       style={{
         backgroundImage: "url(/assets/bg-knit.webp)",
         backgroundRepeat: "no-repeat",
@@ -29,9 +29,7 @@ function RouteComponent() {
         backgroundSize: "contain",
       }}
       animate={
-        isLeaving
-          ? { opacity: 0, scale: 1.08 }
-          : { opacity: 1, scale: 1 }
+        isLeaving ? { opacity: 0, scale: 1.08 } : { opacity: 1, scale: 1 }
       }
       transition={{
         duration: 0.7,
@@ -44,7 +42,7 @@ function RouteComponent() {
       }}
     >
       <div className="relative my-auto -translate-y-4">
-        <Envelope className="rotate-6 translate-x-8" />
+        <Envelope className="translate-x-8 rotate-6" />
         <motion.img
           initial={{
             opacity: 0,
@@ -58,7 +56,7 @@ function RouteComponent() {
             duration: 1.8,
             ease: "easeInOut",
           }}
-          className="absolute left-[50%] -translate-y-[70%] object-cover w-90 z-100"
+          className="absolute left-[50%] z-100 w-90 -translate-y-[70%] object-cover"
           src="/assets/ornament-necklace.webp"
         />
         <InvitationLetter className="-rotate-6" onOpen={handleOpen} />

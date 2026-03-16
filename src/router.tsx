@@ -1,7 +1,6 @@
-import { createRouter } from '@tanstack/react-router'
-import { routeTree } from './routeTree.gen'
+import { createRouter } from "@tanstack/react-router";
+import { routeTree } from "./routeTree.gen";
 
-export const getRouter = () =>
-  createRouter({ routeTree })
+export const getRouter = () => createRouter({ routeTree });
 
-export type Router = ReturnType<typeof getRouter>
+export type Router = ReturnType<typeof getRouter>;

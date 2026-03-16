@@ -1,27 +1,25 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 /* Font imports */
-@import '@fontsource/kalam/400.css';
-@import '@fontsource/kalam/700.css';
-@import '@fontsource/noto-serif/400.css';
-@import '@fontsource/noto-serif/700.css';
-@import '@fontsource/parisienne/400.css';
-@import '@fontsource/roboto-condensed/400.css';
-@import '@fontsource/roboto-condensed/700.css';
+@import "@fontsource/kalam/400.css";
+@import "@fontsource/kalam/700.css";
+@import "@fontsource/noto-serif/400.css";
+@import "@fontsource/noto-serif/700.css";
+@import "@fontsource/parisienne/400.css";
+@import "@fontsource/roboto-condensed/400.css";
+@import "@fontsource/roboto-condensed/700.css";
 
 @theme {
-  --font-kalam: 'Kalam', cursive;
-  --font-noto-serif: 'Noto Serif', serif;
-  --font-parisienne: 'Parisienne', cursive;
-  --font-roboto-condensed: 'Roboto Condensed', sans-serif;
+  --font-kalam: "Kalam", cursive;
+  --font-noto-serif: "Noto Serif", serif;
+  --font-parisienne: "Parisienne", cursive;
+  --font-roboto-condensed: "Roboto Condensed", sans-serif;
 
   --color-grey-olive: #918974;
-  --color-fuchsia-plum: #bc6890
+  --color-fuchsia-plum: #bc6890;
 }
 
-
 @layer base {
-
   html,
   body,
   #root {
@@ -47,8 +45,8 @@
   }
 
   code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-      monospace;
+    font-family:
+      source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
   }
 
   #root {

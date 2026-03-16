@@ -20,7 +20,7 @@ export function InvitationLetter({ className, onOpen }: InvitationLetterProps) {
       transition={{
         duration: 2,
       }}
-      className={twMerge("w-90 h-auto py-[12cqi] text-fuchsia-plum", className)}
+      className={twMerge("text-fuchsia-plum h-auto w-90 py-[12cqi]", className)}
       style={{
         backgroundImage: "url(/assets/bg-letter-vertical.webp)",
         backgroundPosition: "100% auto",
@@ -29,14 +29,14 @@ export function InvitationLetter({ className, onOpen }: InvitationLetterProps) {
         containerType: "inline-size",
       }}
     >
-      <h3 className="font-noto-serif text-center uppercase text-[4cqi]">
+      <h3 className="font-noto-serif text-center text-[4cqi] uppercase">
         The Wedding of
       </h3>
-      <div className="font-parisienne text-[10cqi] flex justify-center items-center mb-8">
+      <div className="font-parisienne mb-8 flex items-center justify-center text-[10cqi]">
         <span>Thalita</span>
         <img
           src="/assets/doves-pink.webp"
-          className="w-[24cqi] mx-[-2cqi] object-contain translate-y-[2cqi]"
+          className="mx-[-2cqi] w-[24cqi] translate-y-[2cqi] object-contain"
         />
         <span>Rama</span>
       </div>
@@ -51,7 +51,7 @@ export function InvitationLetter({ className, onOpen }: InvitationLetterProps) {
           repeatDelay: 2.5,
           ease: "easeInOut",
         }}
-        className="uppercase text-[#2b2b2b]  w-full inline-block text-[4cqi] py-[2cqi]"
+        className="inline-block w-full py-[2cqi] text-[4cqi] text-[#2b2b2b] uppercase"
         style={{
           backgroundImage: "url(/assets/border-btn.webp)",
           backgroundRepeat: "no-repeat",

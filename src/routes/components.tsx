@@ -8,7 +8,7 @@ export const Route = createFileRoute("/components")({
 
 function RouteComponent() {
   return (
-    <div className="flex flex-col justify-center items-center bg-grey-olive min-h-dvh overflow-hidden">
+    <div className="bg-grey-olive flex min-h-dvh flex-col items-center justify-center overflow-hidden">
       <Envelope />
       <InvitationLetter />
     </div>
