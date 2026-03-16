@@ -16,7 +16,7 @@ function RouteComponent() {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="no-scrollbar mx-auto h-dvh overflow-y-scroll py-8"
+      className="no-scrollbar mx-auto h-dvh w-full overflow-y-scroll py-8"
       style={{
         backgroundImage: "url(/assets/bg-texture.webp)",
         backgroundRepeat: "no-repeat",
@@ -25,8 +25,8 @@ function RouteComponent() {
       }}
     >
       {/* wrapper */}
-      <div className="mx-4 max-w-md md:mx-auto">
-        <PaperSection className="px-2">
+      <div className="mx-4 md:mx-auto md:max-w-lg lg:max-w-xl">
+        <PaperSection className="w-full px-2">
           <h3 className="font-noto-serif mt-4 text-center text-[4cqi] uppercase">
             The Wedding of
           </h3>
@@ -98,7 +98,7 @@ function RouteComponent() {
           </div>
         </PaperSection>
 
-        <PaperSection className="-mt-[4cqi] w-full px-4 text-center">
+        <PaperSection className="-mt-[4cqi] w-full px-4 text-center lg:-mt-4">
           <h2 className="font-noto-serif mb-6 text-lg tracking-widest text-[#3a3a3a] uppercase sm:text-xl">
             Awal kami bertemu...
           </h2>
@@ -266,7 +266,7 @@ const FormSection = () => {
                 type="radio"
                 name="status"
                 value="hadir"
-                className="checked:bg-fuchsia-plum h-6 w-6 shrink-0 appearance-none rounded-full border-2 border-black bg-[#e8b4be] transition-colors checked:border-black"
+                className="h-6 w-6 shrink-0 appearance-none rounded-full border-2 border-black bg-[#e8b4be] transition-colors checked:border-black checked:bg-[#832251]"
               />
               Akan Hadir
             </label>
@@ -275,7 +275,7 @@ const FormSection = () => {
                 type="radio"
                 name="status"
                 value="tidak-hadir"
-                className="checked:bg-fuchsia-plum h-6 w-6 shrink-0 appearance-none rounded-full border-2 border-black bg-[#e8b4be] transition-colors checked:border-black"
+                className="h-6 w-6 shrink-0 appearance-none rounded-full border-2 border-black bg-[#e8b4be] transition-colors checked:border-black checked:bg-[#832251]"
               />
               Tidak Bisa Hadir
             </label>
