@@ -56,7 +56,7 @@ function RouteComponent() {
             duration: 1.8,
             ease: "easeInOut",
           }}
-          className="absolute left-[50%] z-100 w-90 -translate-y-[70%] object-cover"
+          className="absolute left-[50%] z-100 w-90 -translate-y-[70%] object-cover md:left-[65%] md:w-100 lg:w-110 xl:w-125"
           src="/assets/ornament-necklace.webp"
         />
         <InvitationLetter className="-rotate-6" onOpen={handleOpen} />

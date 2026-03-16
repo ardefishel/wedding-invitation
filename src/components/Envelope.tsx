@@ -29,7 +29,7 @@ export function Envelope({ className }: { className?: string }) {
         }}
       >
         <div
-          className="relative w-80 bg-white"
+          className="relative w-80 bg-white md:w-100 lg:w-120 xl:w-140"
           style={{ containerType: "inline-size", aspectRatio: "800 / 563" }}
         >
           {/* inner */}

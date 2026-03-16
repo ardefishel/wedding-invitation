@@ -20,7 +20,10 @@ export function InvitationLetter({ className, onOpen }: InvitationLetterProps) {
       transition={{
         duration: 2,
       }}
-      className={twMerge("text-fuchsia-plum h-auto w-90 py-[12cqi]", className)}
+      className={twMerge(
+        "text-fuchsia-plum h-auto w-90 py-[12cqi] md:max-h-[400px] md:w-105 md:py-20 lg:w-115 xl:w-140",
+        className,
+      )}
       style={{
         backgroundImage: "url(/assets/bg-letter-vertical.webp)",
         backgroundPosition: "100% auto",
