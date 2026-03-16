@@ -10,9 +10,19 @@ export const Route = createFileRoute("/")({
   ssr: false,
 });
 
+function parseGuestLines(): [string, string] | undefined {
+  if (typeof window === "undefined") return undefined;
+  const match = window.location.search.match(/[?&]to=([^&]*)/);
+  if (!match) return undefined;
+  const parts = match[1].split("+").map((p) => decodeURIComponent(p));
+  if (parts.length < 2) return [parts[0], ""];
+  return [parts.slice(0, -1).join(" "), parts[parts.length - 1]];
+}
+
 function RouteComponent() {
   const [isLeaving, setIsLeaving] = useState(false);
   const { navigate } = useNavigateWithTransition();
+  const guestLines = parseGuestLines();
 
   const handleOpen = () => {
     if (isLeaving) return;
@@ -42,7 +52,7 @@ function RouteComponent() {
       }}
     >
       <div className="relative my-auto -translate-y-4">
-        <Envelope className="translate-x-8 rotate-6" />
+        <Envelope className="translate-x-8 rotate-6" guestLines={guestLines} />
         <motion.img
           initial={{
             opacity: 0,

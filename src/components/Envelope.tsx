@@ -5,7 +5,13 @@ import { twMerge } from "tailwind-merge";
 
 const FLAP_RATIO = 297 / 800;
 
-export function Envelope({ className }: { className?: string }) {
+export function Envelope({
+  className,
+  guestLines,
+}: {
+  className?: string;
+  guestLines?: [string, string];
+}) {
   const zIndex = useMotionValue(100);
 
   return (
@@ -57,7 +63,15 @@ export function Envelope({ className }: { className?: string }) {
               >
                 <h3 className="font-parisienne text-[8cqi]">Dear,</h3>
                 <h2 className="text-[12cqi] uppercase">
-                  Guest <br /> Name
+                  {guestLines ? (
+                    <>
+                      {guestLines[0]} <br /> {guestLines[1]}
+                    </>
+                  ) : (
+                    <>
+                      Guest <br /> Name
+                    </>
+                  )}
                 </h2>
               </div>
               <span className="text-center text-[4cqi] uppercase">
