@@ -6,9 +6,12 @@ import {
   createRootRoute,
 } from "@tanstack/react-router";
 
+import { inject } from "@vercel/analytics";
 import appCss from "../styles.css?url";
 import usePreloadImage from "@/hooks/usePreloadImage";
 import Spinner from "@/components/Spinner";
+
+inject();
 
 export const Route = createRootRoute({
   head: () => ({
