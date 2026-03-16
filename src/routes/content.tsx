@@ -1,10 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 
 import "./content.css";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useActionState, useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { motion } from "motion/react";
+import { submitRsvp } from "@/server/rsvp";
+import { getWishes, submitWish } from "@/server/wishes";
 
 export const Route = createFileRoute("/content")({
   component: RouteComponent,
@@ -212,6 +215,32 @@ const PaperSection = ({
 };
 
 const FormSection = () => {
+  const submitRsvpFn = useServerFn(submitRsvp);
+  const [rsvpStatus, setRsvpStatus] = useState<
+    "idle" | "pending" | "success" | "error"
+  >("idle");
+
+  const handleRsvpSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    setRsvpStatus("pending");
+
+    try {
+      await submitRsvpFn({
+        data: {
+          name: formData.get("name") as string,
+          whatsapp: formData.get("whatsapp") as string,
+          status: formData.get("status") as string,
+        },
+      });
+      setRsvpStatus("success");
+      form.reset();
+    } catch {
+      setRsvpStatus("error");
+    }
+  };
+
   return (
     <PaperSection className="-mt-4 px-4 pt-10 pb-18 text-center">
       {/* RSVP Heading */}
@@ -221,6 +250,7 @@ const FormSection = () => {
 
       {/* Form */}
       <form
+        onSubmit={handleRsvpSubmit}
         className="mx-auto space-y-4 text-left"
         style={{ maxWidth: "420px" }}
       >
@@ -234,6 +264,8 @@ const FormSection = () => {
           </label>
           <input
             type="text"
+            name="name"
+            required
             className="font-kalam h-9 flex-1 border border-black bg-[#e8b4be] px-3 text-sm text-[#3a3a3a] outline-none"
           />
         </div>
@@ -248,6 +280,8 @@ const FormSection = () => {
           </label>
           <input
             type="tel"
+            name="whatsapp"
+            required
             className="font-kalam h-9 flex-1 border border-black bg-[#e8b4be] px-3 text-sm text-[#3a3a3a] outline-none"
           />
         </div>
@@ -266,6 +300,7 @@ const FormSection = () => {
                 type="radio"
                 name="status"
                 value="hadir"
+                required
                 className="h-6 w-6 shrink-0 appearance-none rounded-full border-2 border-black bg-[#e8b4be] transition-colors checked:border-black checked:bg-[#832251]"
               />
               Akan Hadir
@@ -286,11 +321,23 @@ const FormSection = () => {
         <div className="pt-3">
           <button
             type="submit"
-            className="font-noto-serif w-full rounded-full bg-[#2a2a2a] py-4 text-xs tracking-[0.2em] text-white uppercase transition-colors hover:bg-[#1a1a1a]"
+            disabled={rsvpStatus === "pending"}
+            className="font-noto-serif w-full rounded-full bg-[#2a2a2a] py-4 text-xs tracking-[0.2em] text-white uppercase transition-colors hover:bg-[#1a1a1a] disabled:opacity-50"
           >
-            Kirim RSVP
+            {rsvpStatus === "pending" ? "Mengirim..." : "Kirim RSVP"}
           </button>
         </div>
+
+        {rsvpStatus === "success" && (
+          <p className="font-kalam text-center text-sm text-green-700">
+            Terima kasih! RSVP Anda telah terkirim.
+          </p>
+        )}
+        {rsvpStatus === "error" && (
+          <p className="font-kalam text-center text-sm text-red-700">
+            Gagal mengirim. Silakan coba lagi.
+          </p>
+        )}
       </form>
 
       {/* Ornament Divider */}
@@ -306,32 +353,57 @@ const FormSection = () => {
 };
 
 const WishesSection = () => {
+  const submitWishFn = useServerFn(submitWish);
+  const getWishesFn = useServerFn(getWishes);
+
+  const [wishesList, setWishesList] = useState<
+    { id: number; name: string; message: string; createdAt: Date }[]
+  >([]);
+  const [wishStatus, setWishStatus] = useState<
+    "idle" | "pending" | "success" | "error"
+  >("idle");
+
+  useEffect(() => {
+    getWishesFn().then(setWishesList).catch(console.error);
+  }, []);
+
+  const handleWishSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    setWishStatus("pending");
+
+    try {
+      await submitWishFn({
+        data: {
+          name: formData.get("name") as string,
+          message: formData.get("message") as string,
+        },
+      });
+      setWishStatus("success");
+      form.reset();
+      const updated = await getWishesFn();
+      setWishesList(updated);
+    } catch {
+      setWishStatus("error");
+    }
+  };
+
+  const formatDate = (date: Date) => {
+    const d = new Date(date);
+    return `${d.getDate().toString().padStart(2, "0")}/${(d.getMonth() + 1).toString().padStart(2, "0")}/${d.getFullYear().toString().slice(-2)}`;
+  };
+
   return (
     <PaperSection className="-mt-4 px-4 pt-10 pb-10 text-center">
       <div className="ucapan-border-frame">
         <div className="ucapan-comments-list">
-          {[
-            {
-              name: "stevina",
-              date: "27/01/26",
-              message: "Semoga lancar dan bahagia selaluu",
-            },
-            {
-              name: "stevina",
-              date: "27/01/26",
-              message: "Semoga lancar dan bahagia selaluu",
-            },
-            {
-              name: "stevina",
-              date: "27/01/26",
-              message: "Semoga lancar dan bahagia selaluu",
-            },
-          ].map((item, idx) => (
-            <div key={idx} className="ucapan-comment-item">
+          {wishesList.map((item) => (
+            <div key={item.id} className="ucapan-comment-item">
               <p className="font-noto-serif text-sm font-bold text-[#3a3a3a]">
                 {item.name}{" "}
                 <span className="font-normal text-[#7a7a7a]">
-                  - {item.date}
+                  - {formatDate(item.createdAt)}
                 </span>
               </p>
               <p className="font-kalam text-sm text-[#4a4a4a]">
@@ -339,10 +411,15 @@ const WishesSection = () => {
               </p>
             </div>
           ))}
+          {wishesList.length === 0 && (
+            <p className="font-kalam py-4 text-sm text-[#7a7a7a]">
+              Belum ada ucapan. Jadilah yang pertama!
+            </p>
+          )}
         </div>
 
         {/* Ucapan Form */}
-        <form className="ucapan-form">
+        <form onSubmit={handleWishSubmit} className="ucapan-form">
           <div className="flex items-center gap-4">
             <label
               className="font-noto-serif text-fuchsia-plum text-xs font-bold tracking-widest uppercase"
@@ -352,6 +429,8 @@ const WishesSection = () => {
             </label>
             <input
               type="text"
+              name="name"
+              required
               className="font-kalam h-9 flex-1 border border-black bg-[#e8b4be] px-3 text-sm text-[#3a3a3a] outline-none"
             />
           </div>
@@ -365,6 +444,8 @@ const WishesSection = () => {
             </label>
             <textarea
               rows={3}
+              name="message"
+              required
               className="font-kalam flex-1 resize-none border border-black bg-[#e8b4be] px-3 py-2 text-sm text-[#3a3a3a] outline-none"
             />
           </div>
@@ -372,11 +453,23 @@ const WishesSection = () => {
           <div className="flex justify-center pt-3">
             <button
               type="submit"
-              className="font-noto-serif rounded-full bg-[#2a2a2a] px-10 py-3 text-xs tracking-[0.2em] text-white uppercase transition-colors hover:bg-[#1a1a1a]"
+              disabled={wishStatus === "pending"}
+              className="font-noto-serif rounded-full bg-[#2a2a2a] px-10 py-3 text-xs tracking-[0.2em] text-white uppercase transition-colors hover:bg-[#1a1a1a] disabled:opacity-50"
             >
-              Kirim Ucapan
+              {wishStatus === "pending" ? "Mengirim..." : "Kirim Ucapan"}
             </button>
           </div>
+
+          {wishStatus === "success" && (
+            <p className="font-kalam text-center text-sm text-green-700">
+              Ucapan Anda telah terkirim!
+            </p>
+          )}
+          {wishStatus === "error" && (
+            <p className="font-kalam text-center text-sm text-red-700">
+              Gagal mengirim. Silakan coba lagi.
+            </p>
+          )}
         </form>
       </div>
 
