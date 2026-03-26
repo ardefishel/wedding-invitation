@@ -40,8 +40,7 @@
     background-color: #faf9f7;
     color: #2c2c2c;
     min-height: 100dvh;
-    /* overflow: hidden; */
-    /* overscroll-behavior: none; */
+    overflow: hidden;
   }
 
   code {

@@ -42,7 +42,7 @@ function RouteComponent() {
             <span>Rama</span>
           </div>
 
-          <div className="mx-auto flex -rotate-[0.5deg] items-center justify-center gap-26 px-4 text-[#5a5a5a] uppercase">
+          <div className="mx-auto flex -rotate-[0.5deg] items-center justify-center gap-26 px-4  text-[#5a5a5a] uppercase">
             <span className="font-noto-serif -translate-x-[4cqi] text-base text-[3cqi] tracking-normal">
               24 Mei 2026
             </span>
@@ -50,12 +50,12 @@ function RouteComponent() {
               Dammara Space <br /> Bogor
             </span>
           </div>
-          <img
+          {/* <img
             className="mx-auto max-w-[70cqi] -translate-y-[2cqi]"
             src="/assets/hero-1.webp"
-          />
+          /> */}
           <p
-            className="font-kalam -mt-3 mb-4 text-center text-[5cqi] font-bold text-[#3a3a3a] sm:text-3xl"
+            className="font-kalam my-8 text-center text-[5cqi] font-bold text-[#3a3a3a] sm:text-3xl"
             dir="rtl"
           >
             بِسْمِ اللّهِ الرَّحْمَنِ الرَّحِيْمِ
