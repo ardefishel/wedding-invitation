@@ -94,7 +94,7 @@ function RouteComponent() {
               <p className="font-kalam text-fuchsia-plum mt-1 text-xs leading-snug">
                 Putra dari
                 <br />
-                Mudi Handoko &<br />
+                Mudihandoko &<br />
                 Suparti
               </p>
             </div>
