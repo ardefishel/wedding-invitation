@@ -474,11 +474,11 @@ const WishesSection = () => {
       </div>
 
       {/* Footer Credit */}
-      <p className="font-kalam mt-8 text-xs leading-relaxed text-[#7a7a7a]">
+      {/* <p className="font-kalam mt-8 text-xs leading-relaxed text-[#7a7a7a]">
         This website is designed by
         <br />
         Wira Putra & Stevina Peni | 2026
-      </p>
+      </p> */}
     </PaperSection>
   );
 };
