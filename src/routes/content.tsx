@@ -42,7 +42,7 @@ function RouteComponent() {
             <span>Rama</span>
           </div>
 
-          <div className="mx-auto flex -rotate-[0.5deg] items-center justify-center gap-26 px-4  text-[#5a5a5a] uppercase">
+          <div className="mx-auto flex -rotate-[0.5deg] items-center justify-center gap-26 px-4 text-[#5a5a5a] uppercase">
             <span className="font-noto-serif -translate-x-[4cqi] text-base text-[3cqi] tracking-normal">
               24 Mei 2026
             </span>
@@ -50,17 +50,17 @@ function RouteComponent() {
               Dammara Space <br /> Bogor
             </span>
           </div>
-          {/* <img
-            className="mx-auto max-w-[70cqi] -translate-y-[2cqi]"
-            src="/assets/hero-1.webp"
-          /> */}
+          <img
+            className="mx-auto my-8 max-w-[70cqi] -translate-y-[2cqi]"
+            src="/assets/hero-3.webp"
+          />
           <p
-            className="font-kalam my-8 text-center text-[5cqi] font-bold text-[#3a3a3a] sm:text-3xl"
+            className="font-kalam my-4 text-center text-[5cqi] font-bold text-[#3a3a3a] sm:text-3xl"
             dir="rtl"
           >
             بِسْمِ اللّهِ الرَّحْمَنِ الرَّحِيْمِ
           </p>
-          <p className="font-kalam mx-auto mb-10 max-w-sm text-center text-[3.6cqi] leading-snug text-[#4a4a4a]">
+          <p className="font-kalam mx-auto mb-10 max-w-md text-center text-[2.6cqi] leading-snug text-[#4a4a4a]">
             Dengan hati yang penuh bahagia, kami ingin mengajak
             Bapak/Ibu/Saudara/i untuk menjadi bagian dari momen spesial kami.
             Hari itu akan menjadi awal perjalanan kami bersama, dan doa serta
@@ -73,7 +73,7 @@ function RouteComponent() {
                 <br />
                 Aqilla
               </h3>
-              <p className="font-kalam text-fuchsia-plum mt-1 text-xs leading-snug">
+              <p className="font-kalam text-fuchsia-plum mt-1 text-xs leading-snug font-semibold">
                 Putri dari
                 <br />
                 Budy Sulistriono &<br />
@@ -91,10 +91,10 @@ function RouteComponent() {
                 <br />
                 Ariandi
               </h3>
-              <p className="font-kalam text-fuchsia-plum mt-1 text-xs leading-snug">
+              <p className="font-kalam text-fuchsia-plum mt-1 text-xs leading-snug font-semibold">
                 Putra dari
                 <br />
-                Mudihandoko &<br />
+                Mudi Handoko &<br />
                 Suparti
               </p>
             </div>
@@ -107,7 +107,7 @@ function RouteComponent() {
           </h2>
 
           {/* Love Story Paragraphs */}
-          <div className="font-kalam mx-auto mb-12 max-w-sm space-y-4 text-sm leading-relaxed text-[#4a4a4a]">
+          <div className="font-kalam mx-auto mb-12 max-w-md space-y-4 text-sm leading-relaxed text-[#4a4a4a]">
             <p>
               Kisah ini bermula di SDIT Aliya. Dua hati kecil yang mengenal suka
               dengan cara paling sederhana. Lalu kami tumbuh, berpisah, dan
@@ -134,28 +134,34 @@ function RouteComponent() {
 
           {/* Agenda Details */}
           <div className="flex flex-col items-center gap-2">
-            <span className="font-noto-serif text-fuchsia-plum text-sm tracking-widest uppercase">
-              Akad
-            </span>
-            <span className="font-noto-serif text-fuchsia-plum text-base font-bold">
-              8.00 - 11.00 WIB
-            </span>
+            <div className="flex flex-col items-center">
+              <p className="font-kalam text-sm font-bold uppercase">
+                Akad - Resepsi
+              </p>
+              <p className="font-noto-serif text-base uppercase">
+                Minggu, 24 Mei 2026
+              </p>
+              <p className="font-noto-serif text-base">8.00 - 11.00 WIB</p>
+            </div>
 
             <img
               src="/assets/ornament-ring.webp"
               alt=""
               className="my-2 w-16 object-contain sm:w-20"
             />
-
-            <span className="font-kalam text-fuchsia-plum text-sm font-bold uppercase">
-              Dammara Space Bogor
-            </span>
-            <span className="font-kalam text-fuchsia-plum text-sm italic">
-              Katulampa, Bogor Timur, Bogor City, West Java 16144
-            </span>
+            <div className="flex flex-col items-center">
+              <p className="font-kalam uppercase">Dammara Space Bogor</p>
+              <p className="font-kalam">
+                Katulampa, Bogor Timur, Bogor City, West Java 16144
+              </p>
+            </div>
 
             <div className="mt-4">
-              <Link to="/content">
+              <a
+                href="https://maps.app.goo.gl/ry3ceDzuXcPN8VAJ9"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <motion.button
                   className="inline-block w-full px-[8cqi] py-[4cqi] text-[4cqi] text-[#2b2b2b] uppercase"
                   style={{
@@ -167,7 +173,7 @@ function RouteComponent() {
                 >
                   Google Maps
                 </motion.button>
-              </Link>
+              </a>
             </div>
           </div>
         </PaperSection>
@@ -187,8 +193,10 @@ function RouteComponent() {
           </p>
         </PaperSection>
 
-        <FormSection />
-        <WishesSection />
+        <PaperSection className="-mt-4">
+          <FormSection />
+          <WishesSection />
+        </PaperSection>
       </div>
     </motion.div>
   );
@@ -242,7 +250,7 @@ const FormSection = () => {
   };
 
   return (
-    <PaperSection className="-mt-4 px-4 pt-10 pb-18 text-center">
+    <section className="-mt-4 px-4 pt-10 pb-8 text-center">
       {/* RSVP Heading */}
       <h2 className="font-noto-serif mb-8 text-2xl tracking-[0.3em] text-[#3a3a3a] sm:text-3xl">
         RSVP
@@ -339,16 +347,7 @@ const FormSection = () => {
           </p>
         )}
       </form>
-
-      {/* Ornament Divider */}
-      <div className="mt-10">
-        <img
-          src="/assets/ornament-divider.webp"
-          alt=""
-          className="mx-auto w-64 sm:w-72"
-        />
-      </div>
-    </PaperSection>
+    </section>
   );
 };
 
@@ -395,7 +394,16 @@ const WishesSection = () => {
   };
 
   return (
-    <PaperSection className="-mt-4 px-4 pt-10 pb-10 text-center">
+    <section className="-mt-4 px-4  pb-10 text-center">
+      {/* Ornament Divider */}
+      <div className="mt-10">
+        <img
+          src="/assets/ornament-divider.webp"
+          alt=""
+          className="mx-auto w-64 sm:w-72"
+        />
+      </div>
+      <h3 className="text-center uppercase font-noto-serif tracking-wide text-2xl mt-8">Sudut Ucapan</h3>
       <div className="ucapan-border-frame">
         <div className="ucapan-comments-list">
           {wishesList.map((item) => (
@@ -473,12 +481,24 @@ const WishesSection = () => {
         </form>
       </div>
 
+      <div className="font-kalam mx-auto px-6 text-center text-sm leading-relaxed">
+        <p>
+          Dengan tidak mengurangi rasa hormat, kami dengan tulus memohon agar
+          Bapak/Ibu/Saudara/i tidak perlu memberikan amplop, souvenir, hadiah,
+          atau tanda kasih lainnya.
+        </p>
+        <p className="mt-4 ">
+          Bagi kami, kehadiran serta doa dan restu yang tulus adalah anugerah
+          terindah yang sangat kami harapkan.
+        </p>
+      </div>
+
       {/* Footer Credit */}
       {/* <p className="font-kalam mt-8 text-xs leading-relaxed text-[#7a7a7a]">
         This website is designed by
         <br />
         Wira Putra & Stevina Peni | 2026
       </p> */}
-    </PaperSection>
+    </section>
   );
 };

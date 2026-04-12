@@ -61,7 +61,9 @@ export function Envelope({
                 className="w-full text-center leading-none"
                 style={{ containerType: "inline-size" }}
               >
-                <h3 className="font-parisienne text-[8cqi]">Dear,</h3>
+                <h3 className="font-parisienne text-[8cqi]">
+                  {guestLines ? "Dear," : "You're warmly"}
+                </h3>
                 <h2 className="text-[12cqi] uppercase">
                   {guestLines ? (
                     <>
@@ -69,14 +71,16 @@ export function Envelope({
                     </>
                   ) : (
                     <>
-                      Guest <br /> Name
+                      Invited <br /> To...
                     </>
                   )}
                 </h2>
               </div>
-              <span className="text-center text-[4cqi] uppercase">
-                You are invited to ...{" "}
-              </span>
+              {guestLines && (
+                <span className="text-center text-[4cqi] uppercase">
+                  You are invited to ...{" "}
+                </span>
+              )}
               <img
                 className="absolute right-[8cqi] -bottom-[20cqi] my-auto w-[26cqi] rotate-6"
                 alt=""

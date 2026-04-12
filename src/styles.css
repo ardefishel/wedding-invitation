@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 /* Font imports */
-@import "@fontsource/kalam/400.css";
-@import "@fontsource/kalam/700.css";
+@import "@fontsource/open-sans/400.css";
+@import "@fontsource/open-sans/600.css";
+@import "@fontsource/open-sans/700.css";
 @import "@fontsource/noto-serif/400.css";
 @import "@fontsource/noto-serif/700.css";
 @import "@fontsource/parisienne/400.css";
@@ -10,7 +11,7 @@
 @import "@fontsource/roboto-condensed/700.css";
 
 @theme {
-  --font-kalam: "Kalam", cursive;
+  --font-kalam: "Open Sans", sans-serif;
   --font-noto-serif: "Noto Serif", serif;
   --font-parisienne: "Parisienne", cursive;
   --font-roboto-condensed: "Roboto Condensed", sans-serif;

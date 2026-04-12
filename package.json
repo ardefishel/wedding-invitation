@@ -16,6 +16,7 @@
   "dependencies": {
     "@fontsource/kalam": "^5.2.8",
     "@fontsource/noto-serif": "^5.2.9",
+    "@fontsource/open-sans": "^5.2.7",
     "@fontsource/parisienne": "^5.2.8",
     "@fontsource/roboto-condensed": "^5.2.8",
     "@neondatabase/serverless": "^1.0.2",
