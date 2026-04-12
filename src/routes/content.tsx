@@ -51,7 +51,7 @@ function RouteComponent() {
             </span>
           </div>
           <img
-            className="mx-auto my-8 max-w-[70cqi] -translate-y-[2cqi]"
+            className="mx-auto my-8 max-w-[76cqi] -translate-y-[2cqi]"
             src="/assets/hero-3.webp"
           />
           <p
