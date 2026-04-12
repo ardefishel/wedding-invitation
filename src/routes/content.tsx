@@ -60,7 +60,7 @@ function RouteComponent() {
           >
             بِسْمِ اللّهِ الرَّحْمَنِ الرَّحِيْمِ
           </p>
-          <p className="font-kalam mx-auto mb-10 max-w-md text-center text-[2.6cqi] leading-snug text-[#4a4a4a]">
+          <p className="font-kalam mx-auto mb-10 max-w-sm text-center text-sm leading-snug text-[#4a4a4a]">
             Dengan hati yang penuh bahagia, kami ingin mengajak
             Bapak/Ibu/Saudara/i untuk menjadi bagian dari momen spesial kami.
             Hari itu akan menjadi awal perjalanan kami bersama, dan doa serta
@@ -107,7 +107,7 @@ function RouteComponent() {
           </h2>
 
           {/* Love Story Paragraphs */}
-          <div className="font-kalam mx-auto mb-12 max-w-md space-y-4 text-sm leading-relaxed text-[#4a4a4a]">
+          <div className="font-kalam mx-auto mb-12 max-w-sm space-y-4 text-sm leading-relaxed text-[#4a4a4a]">
             <p>
               Kisah ini bermula di SDIT Aliya. Dua hati kecil yang mengenal suka
               dengan cara paling sederhana. Lalu kami tumbuh, berpisah, dan
@@ -481,7 +481,7 @@ const WishesSection = () => {
         </form>
       </div>
 
-      <div className="font-kalam mx-auto px-6 text-center text-sm leading-relaxed">
+      <div className="font-kalam md:max-w-md max-w-sm mx-auto px-6 text-center text-sm leading-relaxed">
         <p>
           Dengan tidak mengurangi rasa hormat, kami dengan tulus memohon agar
           Bapak/Ibu/Saudara/i tidak perlu memberikan amplop, souvenir, hadiah,
