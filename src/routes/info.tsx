@@ -103,7 +103,7 @@ function InfoPage() {
   };
 
   return (
-    <div className="min-h-dvh overflow-y-auto bg-[#111] text-white">
+    <div className="h-dvh overflow-y-auto bg-[#111] text-white">
       <div className="mx-auto max-w-5xl px-4 py-8">
           <div className="mb-8 flex items-center justify-between">
             <h1 className="text-2xl font-bold">Dashboard</h1>
