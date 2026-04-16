@@ -9,6 +9,7 @@ export const auth = betterAuth({
     provider: "pg",
     schema: authSchema,
   }),
+  trustedOrigins: ["https://thalitarama.momenty.online"],
   emailAndPassword: {
     enabled: true,
   },
