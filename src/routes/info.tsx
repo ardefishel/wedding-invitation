@@ -81,6 +81,16 @@ function InfoPage() {
     downloadCsv("wishes.csv", ["Nama", "Ucapan", "Tanggal"], rows);
   };
 
+  const PAGE_SIZE = 10;
+  const [resPage, setResPage] = useState(1);
+  const [wishPage, setWishPage] = useState(1);
+
+  const totalResPages = Math.max(1, Math.ceil((data?.reservations.length ?? 0) / PAGE_SIZE));
+  const totalWishPages = Math.max(1, Math.ceil((data?.wishes.length ?? 0) / PAGE_SIZE));
+
+  const paginatedReservations = data?.reservations.slice((resPage - 1) * PAGE_SIZE, resPage * PAGE_SIZE);
+  const paginatedWishes = data?.wishes.slice((wishPage - 1) * PAGE_SIZE, wishPage * PAGE_SIZE);
+
   const formatDate = (date: Date) => {
     const d = new Date(date);
     return d.toLocaleDateString("id-ID", {
@@ -93,9 +103,8 @@ function InfoPage() {
   };
 
   return (
-    <html lang="en">
-      <body className="min-h-dvh bg-[#111] text-white">
-        <div className="mx-auto max-w-5xl px-4 py-8">
+    <div className="min-h-dvh overflow-y-auto bg-[#111] text-white">
+      <div className="mx-auto max-w-5xl px-4 py-8">
           <div className="mb-8 flex items-center justify-between">
             <h1 className="text-2xl font-bold">Dashboard</h1>
             <div className="flex items-center gap-4">
@@ -146,12 +155,12 @@ function InfoPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {data?.reservations.map((r, i) => (
+                  {paginatedReservations?.map((r, i) => (
                     <tr
                       key={r.id}
                       className="border-b border-gray-800/50 hover:bg-[#1a1a1a]"
                     >
-                      <td className="px-4 py-3 text-gray-500">{i + 1}</td>
+                      <td className="px-4 py-3 text-gray-500">{(resPage - 1) * PAGE_SIZE + i + 1}</td>
                       <td className="px-4 py-3">{r.name}</td>
                       <td className="px-4 py-3 text-gray-300">{r.whatsapp}</td>
                       <td className="px-4 py-3">
@@ -193,6 +202,29 @@ function InfoPage() {
                 </tbody>
               </table>
             </div>
+            {totalResPages > 1 && (
+              <div className="mt-3 flex items-center justify-between text-sm">
+                <span className="text-gray-500">
+                  Page {resPage} of {totalResPages}
+                </span>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setResPage((p) => Math.max(1, p - 1))}
+                    disabled={resPage === 1}
+                    className="rounded bg-[#2a2a2a] px-3 py-1 text-gray-300 transition-colors hover:bg-[#3a3a3a] disabled:opacity-30"
+                  >
+                    Previous
+                  </button>
+                  <button
+                    onClick={() => setResPage((p) => Math.min(totalResPages, p + 1))}
+                    disabled={resPage === totalResPages}
+                    className="rounded bg-[#2a2a2a] px-3 py-1 text-gray-300 transition-colors hover:bg-[#3a3a3a] disabled:opacity-30"
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+            )}
           </section>
 
           {/* Wishes */}
@@ -229,12 +261,12 @@ function InfoPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {data?.wishes.map((w, i) => (
+                  {paginatedWishes?.map((w, i) => (
                     <tr
                       key={w.id}
                       className="border-b border-gray-800/50 hover:bg-[#1a1a1a]"
                     >
-                      <td className="px-4 py-3 text-gray-500">{i + 1}</td>
+                      <td className="px-4 py-3 text-gray-500">{(wishPage - 1) * PAGE_SIZE + i + 1}</td>
                       <td className="px-4 py-3">{w.name}</td>
                       <td className="max-w-md px-4 py-3 text-gray-300">
                         {w.message}
@@ -267,9 +299,31 @@ function InfoPage() {
                 </tbody>
               </table>
             </div>
+            {totalWishPages > 1 && (
+              <div className="mt-3 flex items-center justify-between text-sm">
+                <span className="text-gray-500">
+                  Page {wishPage} of {totalWishPages}
+                </span>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setWishPage((p) => Math.max(1, p - 1))}
+                    disabled={wishPage === 1}
+                    className="rounded bg-[#2a2a2a] px-3 py-1 text-gray-300 transition-colors hover:bg-[#3a3a3a] disabled:opacity-30"
+                  >
+                    Previous
+                  </button>
+                  <button
+                    onClick={() => setWishPage((p) => Math.min(totalWishPages, p + 1))}
+                    disabled={wishPage === totalWishPages}
+                    className="rounded bg-[#2a2a2a] px-3 py-1 text-gray-300 transition-colors hover:bg-[#3a3a3a] disabled:opacity-30"
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+            )}
           </section>
         </div>
-      </body>
-    </html>
+    </div>
   );
 }

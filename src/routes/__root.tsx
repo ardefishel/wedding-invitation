@@ -4,6 +4,7 @@ import {
   Outlet,
   Scripts,
   createRootRoute,
+  useLocation,
 } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 
@@ -122,12 +123,16 @@ function BackgroundMusic() {
   );
 }
 
+const SILENT_ROUTES = ["/info", "/login"];
+
 function ClientApp() {
   const { isLoaded } = usePreloadImage();
+  const { pathname } = useLocation();
+  const showMusic = !SILENT_ROUTES.includes(pathname);
 
   return isLoaded ? (
     <>
-      <BackgroundMusic />
+      {showMusic && <BackgroundMusic />}
       <Outlet />
     </>
   ) : (
