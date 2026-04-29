@@ -15,6 +15,19 @@ import Spinner from "@/components/Spinner";
 
 inject();
 
+const SITE_URL =
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "") ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "") ||
+  "";
+
+const OG_TITLE = "Thalita & Rama Wedding Invitation";
+const OG_DESCRIPTION =
+  "Dengan hati yang penuh bahagia, kami mengundang Anda untuk hadir di hari pernikahan kami. Minggu, 24 Mei 2026 — Dammara Space, Bogor.";
+const OG_IMAGE = `${SITE_URL}/assets/hero-3.webp`;
+const OG_URL = SITE_URL || "/";
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -26,7 +39,36 @@ export const Route = createRootRoute({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "Thalita & Rama Wedding Invitation",
+        title: OG_TITLE,
+      },
+      {
+        name: "description",
+        content: OG_DESCRIPTION,
+      },
+      // Open Graph
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: OG_TITLE },
+      { property: "og:title", content: OG_TITLE },
+      { property: "og:description", content: OG_DESCRIPTION },
+      { property: "og:url", content: OG_URL },
+      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image:secure_url", content: OG_IMAGE },
+      { property: "og:image:type", content: "image/webp" },
+      { property: "og:image:width", content: "2548" },
+      { property: "og:image:height", content: "1261" },
+      {
+        property: "og:image:alt",
+        content: "Thalita & Rama — Wedding Invitation",
+      },
+      { property: "og:locale", content: "id_ID" },
+      // Twitter
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: OG_TITLE },
+      { name: "twitter:description", content: OG_DESCRIPTION },
+      { name: "twitter:image", content: OG_IMAGE },
+      {
+        name: "twitter:image:alt",
+        content: "Thalita & Rama — Wedding Invitation",
       },
     ],
     links: [
