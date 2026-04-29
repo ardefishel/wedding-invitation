@@ -133,15 +133,15 @@ function RouteComponent() {
           </h2>
 
           {/* Agenda Details */}
-          <div className="flex flex-col items-center gap-2">
-            <div className="flex flex-col items-center">
-              <p className="font-kalam text-sm font-bold uppercase">
-                Akad - Resepsi
-              </p>
-              <p className="font-noto-serif text-base uppercase">
+          <div className="flex flex-col items-center gap-3">
+            <div className="flex flex-col items-center gap-1 text-center">
+              <p className="font-noto-serif text-base font-bold uppercase">
                 Minggu, 24 Mei 2026
               </p>
-              <p className="font-noto-serif text-base">8.00 - 11.00 WIB</p>
+              <p className="font-kalam text-lg leading-none">Akad 8.00 - 9.00 WIB</p>
+              <p className="font-kalam text-lg leading-none">
+                Resepsi 9.30 - 12.00 WIB
+              </p>
             </div>
 
             <img
